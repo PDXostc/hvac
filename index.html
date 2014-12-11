@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (c) 2014, Intel Corporation, Jaguar Land Rover
+ *
+ * This program is licensed under the terms and conditions of the
+ * Apache License, version 2.0.  The full text of the Apache License is at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+-->
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>DNA_HVAC</title>
+<meta name="viewport" content="width=1080, height=1920, user-scalable=no" />
+
+
+<link rel="stylesheet" href="./DNA_common/css/style.css"/>
+<link rel="stylesheet" href="./css/HVAC.css"/>
+<script type="text/javascript" src="./DNA_common/components/jQuery/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="./DNA_common/js/init.js"></script>
+
+<script type="text/javascript">
+    includeJs("./DNA_common/js/predefAppModel.js");
+    includeJs("./DNA_common/js/installedApps.js");
+    includeJs("./DNA_common/js/keyControl.js");
+    includeJs("./DNA_common/js/actionCatcher.js");
+    includeJs("./DNA_common/js/HomeScreenMain.js");
+    includeJs("./js/main.js");
+</script>
+
+</head>
+
+<body>
+
+<div id="topBar"></div>
+
+<div id="clockElement"></div>
+
+
+<!-- BEGIN HTML ELEMENTS -->
+		<div class="HVACwrapper">
+			<!--<div class="setup">
+				<input id="setup" value="RVI Set Up">
+			</div>
+			
+			<div id="overlay"></div>-->
+			<h6 class="audio-hd-borders"><strong>LEFT</strong></h6>
+			<h6 class="audio-hd-borders"><strong>RIGHT</strong></h6>
+		
+			<div id="inputBox" class="boxShadow3">
+				<div id="setupForm">
+					<div class="labelBox">
+						<div class="text fontSizeLarge fontWeightBold fontColorTheme">PIN NUMBER</div>
+						<div class="text fontSizeLarge fontWeightBold fontColorTheme">VIN NUMBER</div>
+					</div>
+	
+					<div class="inputNumberBox">
+						<div>
+							<input id="password" class="inputNumber fontSizeLarge fontSizeBold fontColorNormal boxShadow4 boxShadow4Active" type="password">
+							<div class="button deleteButton"></div>
+						</div>
+						<div>
+							<input id="vinNumber" class="inputNumber fontSizeLarge fontSizeBold fontColorNormal boxShadow4 boxShadow4Active" type="text">
+							<div class="button deleteButton"></div>
+						</div>
+					</div>
+						
+					<div class="submitButton">
+						<input id="submit" type="submit" value="submit">
+					</div>
+					<div class="submitButton">
+						<input id="cancel" type="submit" value="cancel">
+					</div>
+				</div>
+				<div id="resultMessage">
+					<h2>Success!</h2>
+					<p>You have saved information on this device that will enable up 
+					to 4 mobile devices to connect to and operate the HVAC system remotely.</p>
+					<h2>Tap to close</h2>
+					
+				</div>
+			</div>
+			
+		
+		
+			<div class="static_parts_bg"></div>		
+			<div id="hazard_btn" class="hazard_btn"></div>
+			
+			<div id="left_seat_btn" class="left_seat_btn">
+				<div class="left_heat_seat_off"></div>
+				<div id="left_seat_btn_stage" class="left_heat_seat_on stage1"></div>
+			</div>
+			
+			<div id="right_seat_btn" class="right_seat_btn">
+				<div class="right_heat_seat_off"></div>
+				<div id="right_seat_btn_stage" class="right_heat_seat_on stage1"></div>
+			</div>
+					
+			<div class="left_num_cover"></div>			
+			<div class="left_num_bg">
+				<div id="viewport" class="scrollable left">
+					<ul class="temperature">
+						<li>LO</li>
+						<li>16°</li>
+						<li>17°</li>
+						<li>18°</li>
+						<li>19°</li>
+						<li>20°</li>
+						<li>21°</li>
+						<li>22°</li>
+						<li>23°</li>
+						<li>24°</li>
+						<li>25°</li>
+						<li>26°</li>
+						<li>27°</li>
+						<li>28°</li>
+						<li>HI</li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="right_heat_seat"></div>
+			<div class="right_num_cover"></div>			
+			<div class="right_num_bg">
+				<div id="viewport" class="scrollable right">
+					<ul class="temperature">
+						<li>LO</li>
+						<li>16°</li>
+						<li>17°</li>
+						<li>18°</li>
+						<li>19°</li>
+						<li>20°</li>
+						<li>21°</li>
+						<li>22°</li>
+						<li>23°</li>
+						<li>24°</li>
+						<li>25°</li>
+						<li>26°</li>
+						<li>27°</li>
+						<li>28°</li>
+						<li>HI</li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div id="noUiSliderLeft" class="noUiSliderLeft"></div>
+			<div id="noUiSliderRight" class="noUiSliderRight"></div>
+			<div class="fanSpeedOn"></div>
+			<div id ="fanSpeedSlider" class="noUiSliderFan"></div>
+			
+			<!-- buttons bottom-->
+			<div id="fan_dir_up_btn" class="fan_dir_up_btn"></div>
+			<div id="fan_dir_down_btn" class="fan_dir_down_btn"></div>
+			<div id="fan_dir_right_btn" class="fan_dir_right_btn"></div>
+			
+			<div id="fan_control_ac" class="fan_control_ac"></div>
+			<div id="fan_control_auto" class="fan_control_auto"></div>
+			<div id="fan_control_circ" class="fan_control_circ"></div>
+			
+			<div id="defrost_max_btn" class="defrost_max_btn"></div>
+			<div id="defrost_front_btn" class="defrost_front_btn"></div>
+			<div id="defrost_rear_btn" class="defrost_rear_btn"></div>
+	    </div><!--end of wrapper -->
+
+<!-- END HTML ELEMENTS -->
+
+<div id="bottomBar"></div>
+
+</body>
+
+</html>

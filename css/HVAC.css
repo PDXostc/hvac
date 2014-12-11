@@ -1,0 +1,575 @@
+/* Copyright (C) Jaguar Land Rover - All Rights Reserved
+*
+* Proprietary and confidential
+* Unauthorized copying of this file, via any medium, is strictly prohibited
+*
+* THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY 
+* KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+* IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+* PARTICULAR PURPOSE.
+*
+* Filename:	 header.txt
+* Version:              1.0
+* Date:                 January 2013
+* Project:              Widget incorporation
+* Contributors:         XXXXXXX
+*                       xxxxxxx
+*
+* Incoming Code:        GStreamer 0.93, <link>
+*
+*/
+body {
+	font-family: "Droid Sans", sans-serif;
+	background-color: rgb(0,0,0);
+	background-image: url("/DNA_common/../images/Hex-Background.jpg");
+	display: flex;
+}
+html {
+overflow: hidden;
+}
+.clearBoth {
+	clear:both;
+}
+.borderColorTheme {
+	border-color: rgb(196, 196, 196);
+	border-color: rgba(196, 196, 196, 0.5);
+}
+.HVACwrapper {
+	width: 1080px;
+	height: 1920px;
+	overflow: hidden;		
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	margin: 114px 0;
+	color: rgb(196,196,196);
+}
+
+
+.static_parts_bg{
+	background:url("../images/static_parts_bg.svg") no-repeat;
+	height:60.1%;/*601/1000*/
+	width:100%;/*720/720*/
+	position:absolute;
+	top:18%;
+	/*left:9.861111%;((720-578)/2)/720*/
+	background-size:100%;
+}
+/*********HAZARD BUTTON************/
+.hazard_btn{
+width: 20.9em;
+height: 4.1em;
+background: url("../images/hazard_off.svg") no-repeat;
+top: 5em;
+left: 7.5em;
+position: absolute;
+background-size: 100%;
+}
+.hazard_btn.on{
+
+	background:url("../images/hazard_on.svg") no-repeat;
+	background-size:100%;
+
+}
+
+.hazard_btn.blink{
+
+	background:url("../images/hazard_blink.svg") no-repeat;
+
+	background-size:100%;
+}
+
+.label_borders {
+border-left: 240px solid #fe9c00;
+border-right: 240px solid;
+padding-left: 2%;
+}
+
+/*********LEFT HEAT SEAT BUTTON************/
+.left_seat_btn{
+	width:22.08333333%;/*159/720*/
+	height:12.9%;/*129/1000*/
+	position:absolute;
+	left:21.1111%; /*152/720*/
+	top:22%;
+}
+
+.left_heat_seat_off{
+	background:url("../images/left_heat_seat_off.svg") no-repeat;
+	background-size:100%;	
+	z-index:4;
+	width:100%;
+	height:100%;
+	position:absolute;		
+}
+
+.left_heat_seat_on{
+	margin: 0 0 36px 0;
+	background:url("../images/left_heat_seat_on.svg") no-repeat bottom;
+	z-index:4;
+	width:100%;
+	position:absolute;
+	bottom:0;
+	background-size:100%;	
+}
+.left_heat_seat_on.stage1{
+	height:0;
+}
+.left_heat_seat_on.stage2{
+	height:34%;
+}
+.left_heat_seat_on.stage3{
+	height:50%;
+}
+.left_heat_seat_on.stage4{
+	height:100%;
+}
+
+/*********RIGHT HEAT SEAT BUTTON************/
+.right_seat_btn{
+	width:22.08333333%;/*159/720*/
+	height:12.9%;/*129/1000*/
+	position:absolute;
+	right:21.1111%; /*152/720*/
+	top:22%;
+}
+
+.right_heat_seat_off{
+	background:url("../images/right_heat_seat_off.svg") no-repeat;
+	z-index:4;
+	width:100%;
+	height:100%;
+	position:absolute;	
+	background-size:100%;	
+}
+
+.right_heat_seat_on{
+	margin: 0 0 36px 0;
+	background:url("../images/right_heat_seat_on.svg") no-repeat bottom;
+	z-index:4;
+	width:100%;
+	position:absolute;
+	bottom:0;
+	background-size:100%;	
+}
+
+.right_heat_seat_on.stage1{
+	height:0;
+}
+.right_heat_seat_on.stage2{
+	height:34%;
+}
+.right_heat_seat_on.stage3{
+	height:50%;
+}
+.right_heat_seat_on.stage4{
+	height:100%;
+}
+
+/*********LEFT NUM SLIDER************/
+
+.left_num_bg{
+	background:url("../images/left_number_bg.svg") no-repeat;
+	width:21.9444444%;/*158/720*/
+	height: 18.1%;
+	position:absolute;
+	left:21.1111%; /*152/720*/
+	top:35%;
+	overflow:hidden;
+	z-index:4;	
+	background-size:100%;	
+}
+
+.left_num_cover{
+	background:url("../images/left_number_cover.svg") no-repeat;
+	width:21.9444444%;/*158/720*/
+	height:23.1%;/*231/1000*/
+	position:absolute;
+	left:21.1111%; /*152/720*/
+	top:35%;
+	z-index:5;
+    pointer-events:none;
+	background-size:100%;    
+}
+
+.scrollable.left{
+	height: 100%;
+	position:absolute;
+	width:100%;
+	top:25%;
+}
+
+.scrollable.left ul{
+	list-style-type:none;
+	font-size:7em;
+	padding:0;	
+	margin:0;
+	position: relative; /* Enables positionning of elements inside viewport */
+	height:100%;
+}
+
+.scrollable.left li{
+	width:100%;
+	margin:0;
+	padding:0;
+	color:#fff;
+	line-height:130%;
+	text-align:left;
+	padding-left:5%;
+	position:relative;
+}
+/*********RIGHT NUM SLIDER************/
+
+.right_num_bg{
+	background:url("../images/right_number_bg.svg") no-repeat;
+	width:21.9444444%;/*158/720*/
+	height: 18.1%;
+	position:absolute;
+	right:21.1111%; /*152/720*/
+	top:35%;
+	overflow:hidden;
+	z-index:4;
+	background-size:100%;		
+}
+
+.right_num_cover{
+	background:url("../images/right_number_cover.svg") no-repeat;
+	width:21.9444444%;/*158/720*/
+	height:23.1%;/*231/1000*/
+	position:absolute;
+	right:21.1111%; /*152/720*/
+	top:35%;
+	z-index:5;
+    pointer-events:none;
+	background-size:100%;    
+}
+
+.scrollable.right{
+	height: 100%;
+	position:absolute;
+	width:100%;
+	top:25%;
+}
+
+.scrollable.right ul{
+	list-style-type:none;
+	font-size:7em;
+	padding:0;	
+	margin:0;
+	position: relative; /* Enables positionning of elements inside viewport */
+	height:100%;
+}
+
+.scrollable.right li{
+	width:100%;
+	margin:0;
+	padding:0;
+	color:#fff;
+	line-height:130%;
+	text-align:left;
+	padding-left:16%;
+	position:relative;
+}
+
+/*************lower half******************/
+.fanSpeedOn{
+	width:0;/*42.083333%; 303/720*/
+	height:9.4%; /*94/1000*/
+	background:url("../images/fan_bar_on.svg") no-repeat;
+	position:absolute;
+	left:33.3%;
+	top:57.7%;
+	z-index:0;
+}
+
+
+/********FAN DIRECTION***********/
+.fan_dir_down_btn{
+	background:url("../images/fan_dir_down_off.svg") no-repeat;
+	width:17.08333333%;/*123/720*/
+	height:9.7%;/*97/1000*/
+	top:58.75%;/*20/1000*/
+	left:3.333333%; /*24/720*/
+	position:absolute;
+	background-size:100%;
+}
+.fan_dir_down_btn.on{
+	background:url("../images/fan_dir_down_on.svg") no-repeat;
+}
+.fan_dir_right_btn{
+	background:url("../images/fan_dir_right_off.svg") no-repeat;	
+	width:17.08333333%;/*123/720*/
+	height:9.7%;/*97/1000*/
+	top:67.75%;/*20/1000*/
+	left:3.333333%; /*24/720*/
+	position:absolute;
+	background-size:100%;
+}
+
+.fan_dir_right_btn.on{
+	background:url("../images/fan_dir_right_on.svg") no-repeat;
+}
+
+.fan_dir_up_btn{
+	background:url("../images/fan_dir_up_off.svg") no-repeat;
+	width:17.08333333%;/*123/720*/
+	height:8.8%;/*88/1000*/
+	top:76.1%;/*20/1000*/
+	left:3.333333%; /*24/720*/
+	position:absolute;
+	background-size:100%;
+}
+.fan_dir_up_btn.on{
+	background:url("../images/fan_dir_up_on.svg") no-repeat;
+}
+
+
+
+.fan_control_ac{
+	background:url("../images/fan_control_ac_off.svg") no-repeat;
+	width:15.555556%;/*112/720*/
+	height:8.8%;/*88/1000*/
+	top:67.75%;
+	left:24.333%; /*24/720*/
+	position:absolute;
+	background-size:100%;
+}
+.fan_control_ac.on{
+	background:url("../images/fan_control_ac_on.svg") no-repeat;
+}
+
+.fan_control_auto{
+	background:url("../images/fan_control_auto_off.svg") no-repeat;
+	width:15.416667%;/*111/720*/
+	height:8.8%;/*88/1000*/
+	top:67.75%;
+	left:42.333%; /*24/720*/
+	position:absolute;
+	background-size:100%;
+}
+.fan_control_auto.on{
+	background:url("../images/fan_control_auto_on.svg") no-repeat;
+}
+
+.fan_control_circ{
+	background:url("../images/fan_control_circ_off.svg") no-repeat;
+	width:15.555556%;/*112/720*/
+	height:8.8%;/*88/1000*/
+	top:67.75%;
+	left:60.333%; /*24/720*/
+	position:absolute;
+	background-size:100%;
+}
+.fan_control_circ.on{
+	background:url("../images/fan_control_circ_on.svg") no-repeat;
+}
+
+/***DEFROST****/
+
+.defrost_max_btn{
+	background:url("../images/defrost_max_off.svg") no-repeat;
+	width:17.08333333%;/*123/720*/
+	height:9.7%;/*97/1000*/
+	top:58.75%;/*20/1000*/
+	right:3.333333%; /*24/720*/
+	position:absolute;
+	background-size:100%;
+}
+.defrost_max_btn.on{
+	background:url("../images/defrost_max_on.svg") no-repeat;
+}
+.defrost_rear_btn{
+	background:url("../images/defrost_rear_off.svg") no-repeat;	
+	width:17.08333333%;/*123/720*/
+	height:9.7%;/*97/1000*/
+	top:67.75%;/*20/1000*/
+	right:3.333333%; /*24/720*/
+	position:absolute;
+	background-size:100%;
+}
+
+.defrost_rear_btn.on{
+	background:url("../images/defrost_rear_on.svg") no-repeat;
+}
+
+.defrost_front_btn{
+	background:url("../images/defrost_front_off.svg") no-repeat;
+	width:17.08333333%;/*123/720*/
+	height:8.8%;/*88/1000*/
+	top:76.1%;/*20/1000*/
+	right:3.333333%; /*24/720*/
+	position:absolute;
+	background-size:100%;
+}
+.defrost_front_btn.on{
+	background:url("../images/defrost_front_on.svg") no-repeat;
+}		
+
+.bottomPanelLogoImg {
+	background: url('../images/jlr_logo_color.png') no-repeat center !important;
+}
+#settings {
+  background: rgba(0,0,0,0.5);
+	width: 100%;
+	/*height: 100%;*/
+  z-index: 20;
+  display:none;
+}
+#overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.8;
+    z-index: 19;
+    display: none;
+}
+#inputBox	{
+	left: 12%;
+	top: 70px; /*needs to be at least this high for the keyboard*/
+	width: 550px;
+  	background: rgba(0,0,0,0.8);
+  	z-index: 20;
+  	display: none;
+  	text-align: center;
+  	padding-bottom: 5%;
+}
+form	{
+	position: relative;
+	top:15%;
+	margin: 0 auto;
+	width: 50%;
+	background-color: rgba(0,0,0,0.8);
+	padding: 2%;
+	padding-bottom: 4%;
+}
+.text {
+	padding: 30px 0;
+	text-align: right;
+}
+.textBox {
+	padding-left: 1%;
+	margin: 1% 0 4% 2%;
+	border: none;
+	background-color: #fff;
+	color: #606060;
+	font-weight: bold;
+	font-family: sans-serif, "Arial";
+	font-size: 1.5rem;
+}
+
+#setupForm	{
+	display:block;
+}
+
+#resultMessage	{
+	display:none;
+}
+
+#resultMessage h2 {
+	font-size: 20pt;
+	color: #FFF;
+	text-transform: uppercase;
+	padding: 5%;
+}
+
+#resultMessage p {
+	font-size: 16pt;
+	color: #FFF;
+	margin:0 auto;
+	width: 80%;
+	line-height: 1.5;
+	text-align: left;
+}
+
+.settingsIcon	{
+	background: url('../images/settings_icon.png') no-repeat;
+	position: absolute;
+	left: 84%;
+	top: 1.5%;
+	width: 67px;
+	height: 67px;
+}
+.labelBox	{
+	float: left;
+	padding: 15px 20px;
+}
+.inputNumberBox	{
+	float: left;
+	margin-top: 25px;
+	width: 350px;
+}
+.inputNumber	{
+	margin-bottom: 20px;
+	width: 215px;
+	height: 75px;
+	line-height: 75px;
+	padding-right: 90px;
+	padding-left: 30px;
+	border: none;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.2);
+}
+.inputNumber:focus {
+	outline: none;
+}
+.inputNumberBox .deleteButton {
+	display: inline-block;
+	vertical-align: top;
+	margin: 18px 0 0 -73px;
+	padding: 0;
+	width: 55px;
+	height: 36px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+.loadingSpinnerHistory {
+	top:130px;
+	width:100%;
+	height:100%;
+}
+.submitButton {
+	height: 43px;
+	margin: 5%;
+	background-color: rgba(58, 174, 255, 0.3);
+	box-shadow: 0 0 2px 2px #1DA2FF inset;
+	display: inline-block;
+	text-align: center;
+	padding: 0 20px;
+}
+#submit, #cancel {
+	background: none;
+	border: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 28px;
+	color: rgba(255, 255, 255, 1.0);	
+	line-height: 43px;
+}
+
+.setup {
+	position: absolute;
+	left: 82%;
+	top: 115px;
+	width: 13%;
+	background-color: rgba(58, 174, 255, 0.3);
+	box-shadow: 0 0 2px 2px #1DA2FF inset;
+	text-align: center;
+	padding: 0 20px;
+}
+#setup {
+	background: none;
+	border: none;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 22px;
+	color: rgba(255, 255, 255, 1.0);
+	line-height: 38px;
+}
+
+
+
+/* end of buttons from settings.css */
