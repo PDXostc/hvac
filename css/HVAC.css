@@ -79,10 +79,20 @@ background-size: 100%;
 	background-size:100%;
 }
 
+.climate_labels {
+position: relative;
+width: 28em;
+height: 1.5em;
+top: 9em;
+left: 4em;
+
+}
+
 .label_borders {
-border-left: 240px solid #fe9c00;
-border-right: 240px solid;
+border-left: 67px solid #fe9c00;
 padding-left: 2%;
+float: left;
+margin: 0 1.4em 0 3.6em;
 }
 
 /*********LEFT HEAT SEAT BUTTON************/
