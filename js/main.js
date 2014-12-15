@@ -19,43 +19,6 @@
 *
 */
 
-/*global Bootstrap */
-
-/**
-  * Boilerplate application provides starting point for new applications and provides basic layout and infrastructure:
-  *
-  * * {{#crossLink "Bootstrap"}}{{/crossLink}} component
-  * * {{#crossLink "BottomPanel"}}{{/crossLink}} component
-  * * {{#crossLink "TopBarIcons"}}{{/crossLink}} component
-  *
-  * Update following code for new applications built from this code:
-  *
-  * * `config.xml` - update `/widget/@id`, `/widget/tizen:application/@id`, `/widget/tizen:application/@name`, `/widget/name`
-  * * `icon.png` - application icon
-  *
-  * @module BoilerplateApplication
-  * @main BoilerplateApplication
- **/
-
-/**
- * Reference to instance of  class object this class is inherited from dataModel {@link CarIndicator}
-@property carInd {Object}
- */
-var carInd;
-/**
- * Reference to instance of ThemeEngine class object
- * @property te {Object}
- */
-var te;
-
-/**
- * Array of signals who want subscribe in carInd 
- * @property carIndicatorSignals {string[]}
- */
-var carIndicatorSignals =  [
-                            "IviPoC_NightMode"
-                            ];
-
 function deleteItemClick(item) {
 	console.log(item.target);
 	console.log(item.data.html());
@@ -114,10 +77,6 @@ function bigClick(item) {
     wkb_client.clientSync(JSON.stringify(jsonenc), themeErrorCB);
 }
 
-function toggelModel() {
-	console.log("toggel model");
-	$('#overlay').toggle();
-}
 /**
  * Initialize application components and register button events.
  * 
@@ -125,13 +84,99 @@ function toggelModel() {
  * @static
  */
 
-
 var init = function () {
 	console.log("init()");
     $("input[name='add_item_button']").click(addItemClick);
     $("input[name='small_button']").click(smallClick);
     $("input[name='big_button']").click(bigClick);
-    //$("div[id='overlay']").click(toggelModel);
+
+    var hvacIndicator = new hvacController();
+
+	$(".noUiSliderLeft").noUiSlider({
+	    range : [ 0, 14 ],
+	    step : 1,
+	    start : 14,
+	    handles : 1,
+	    connect : "upper",
+	    orientation : "vertical",
+	    slide : function() {
+		if ($("#defrost_max_btn").hasClass("on")) {
+		    switch ($(this).val()) {
+		    case 0:
+			$(this).val(1);
+			break;
+		    case 14:
+			$(this).val(13);
+			break;
+		    }
+		}
+		carIndicator.setStatus("targetTemperatureLeft", ($(this).val() + 29) - ($(this).val() * 2));
+		carIndicator.setStatus("FrontTSetLeftCmd", ($(this).val() + 29) - ($(this).val() * 2));
+	    }
+	});
+
+	$(".noUiSliderRight").noUiSlider({
+	    range : [ 0, 14 ],
+	    step : 1,
+	    start : 14,
+	    handles : 1,
+	    connect : "upper",
+	    orientation : "vertical",
+	    slide : function() {
+		carIndicator.setStatus("targetTemperatureRight", ($(this).val() + 29) - ($(this).val() * 2));
+		carIndicator.setStatus("FrontTSetRightCmd", ($(this).val() + 29) - ($(this).val() * 2));
+	    }
+	});
+
+	$(".noUiSliderFan").noUiSlider({
+		range : [ 0, 7 ],   // Even though this is defined as 4 bits the car does 0..7
+	    step : 1,
+	    start : 0,
+	    handles : 1,
+	    connect : "upper",
+	    orientation : "horizontal",
+	    slide : function() {
+		carIndicator.setStatus("fanSpeed", $(this).val());
+		carIndicator.setStatus("FrontBlwrSpeedCmd", ($(this).val()));
+	    }
+	});
+
+    carIndicator.addListener({
+	    onAirRecirculationChanged : function(newValue) {
+		hvacIndicator.onAirRecirculationChanged(newValue);
+	    },
+	    onFanChanged : function(newValue) {
+		hvacIndicator.onFanChanged(newValue);
+	    },
+	    onFanSpeedChanged : function(newValue) {
+		hvacIndicator.onFanSpeedChanged(newValue);
+	    },
+	    onTargetTemperatureRightChanged : function(newValue) {
+		hvacIndicator.onTargetTemperatureRightChanged(newValue);
+	    },
+	    onTargetTemperatureLeftChanged : function(newValue) {
+		hvacIndicator.onTargetTemperatureLeftChanged(newValue);
+	    },
+	    onHazardChanged : function(newValue) {
+		hvacIndicator.onHazardChanged(newValue);
+		console.log("onHazardChanged: "+ newValue);
+	    },
+	    onSeatHeaterRightChanged : function(newValue) {
+		hvacIndicator.onSeatHeaterRightChanged(newValue);
+	    },
+	    onSeatHeaterLeftChanged : function(newValue) {
+		hvacIndicator.onSeatHeaterLeftChanged(newValue);
+	    },
+	    onAirflowDirectionChanged : function(newValue) {
+		hvacIndicator.onAirflowDirectionChanged(newValue);
+	    },
+	    onFrontDefrostChanged : function(newValue) {
+		hvacIndicator.onFrontDefrostChanged(newValue);
+	    },
+	    onRearDefrostChanged : function(newValue) {
+		hvacIndicator.onRearDefrostChanged(newValue);
+	    }
+	});
 };
 
 
@@ -141,7 +186,7 @@ var init = function () {
  * @param init {function} Callback function for initialize Store.
  * @static
  **/
-$(document).ready(init);
+$(document).on("carIndicatorReady", init);
 
 /**
  * Applies selected theme to application icons 
