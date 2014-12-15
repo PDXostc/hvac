@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
-	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
-]>
-<svg version="1.1"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-	 x="0px" y="0px" width="68px" height="482px" viewBox="21 125.388 68 482"
-	 overflow="visible" enable-background="new 21 125.388 68 482" xml:space="preserve">
-<defs>
-</defs>
-<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="360.0005" y1="946" x2="360.0005" y2="46.8912">
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="68px" height="482px" viewBox="0 0 68 482" enable-background="new 0 0 68 482" xml:space="preserve">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-107.9995" y1="1254.999" x2="-107.9997" y2="355.8898" gradientTransform="matrix(1 0 0 1 468 -309)">
 	<stop  offset="0" style="stop-color:#041724"/>
 	<stop  offset="1" style="stop-color:#000000"/>
 </linearGradient>
 <rect display="none" fill="url(#SVGID_1_)" width="720" height="1001"/>
 <circle display="none" fill="#31ABFF" stroke="#31ABFF" stroke-width="0.5936" stroke-miterlimit="10" cx="87.502" cy="524.197" r="6.141"/>
 <circle display="none" fill="#31ABFF" fill-opacity="0.45" cx="87.502" cy="524.197" r="10.912"/>
-<line display="none" fill="#31ABFF" stroke="#31ABFF" stroke-width="2" stroke-miterlimit="10" x1="88" y1="529" x2="88" y2="607"/>
+<line display="none" fill="none" stroke="#31ABFF" stroke-width="2" stroke-miterlimit="10" x1="88" y1="529" x2="88" y2="607"/>
 <polyline display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
 	64,596.969 64,606.938 21,606.938 21,581.018 64,581.018 64,596.969 "/>
 <polyline display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
-	64,561.967 64,571.937 21,571.937 21,546.016 64,546.016 64,561.967 "/>
+	64,561.967 64,571.938 21,571.938 21,546.016 64,546.016 64,561.967 "/>
 <polyline display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
 	64,526.966 64,536.935 21,536.935 21,511.015 64,511.015 64,526.966 "/>
 <polyline display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
@@ -45,34 +39,33 @@
 	64,176.952 64,186.921 21,186.921 21,161.001 64,161.001 64,176.952 "/>
 <polyline display="none" fill="#31ABFF" fill-opacity="0.29" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="
 	64,141.951 64,151.92 21,151.92 21,126 64,126 64,141.951 "/>
-<line display="none" fill="#31ABFF" stroke="#31ABFF" stroke-miterlimit="10" x1="80.5" y1="126" x2="80.5" y2="607"/>
-<rect x="87" y="127" fill="#31ABFF" width="2" height="482"/>
-<polyline fill="#31ABFF" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="64,596.969 
-	64,606.938 21,606.938 21,581.018 64,581.018 64,596.969 "/>
-<polyline fill="#31ABFF" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="64,561.967 
-	64,571.937 21,571.937 21,546.016 64,546.016 64,561.967 "/>
-<polyline fill="#31ABFF" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="64,526.966 
-	64,536.935 21,536.935 21,511.015 64,511.015 64,526.966 "/>
-<polyline fill="#31ABFF" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="64,491.964 
-	64,501.934 21,501.934 21,476.014 64,476.014 64,491.964 "/>
-<polyline fill="#31ABFF" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="64,456.963 
-	64,466.932 21,466.932 21,441.012 64,441.012 64,456.963 "/>
-<polyline fill="#31ABFF" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="64,421.961 
-	64,431.931 21,431.931 21,406.01 64,406.01 64,421.961 "/>
-<polyline fill="#31ABFF" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="64,386.96 
-	64,396.929 21,396.929 21,371.009 64,371.009 64,386.96 "/>
-<polyline fill="#31ABFF" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="64,351.959 
-	64,361.928 21,361.928 21,336.008 64,336.008 64,351.959 "/>
-<polyline fill="#31ABFF" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="64,316.958 
-	64,326.927 21,326.927 21,301.007 64,301.007 64,316.958 "/>
-<polyline fill="#31ABFF" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="64,281.956 
-	64,291.925 21,291.925 21,266.005 64,266.005 64,281.956 "/>
-<polyline fill="#31ABFF" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="64,246.955 
-	64,256.924 21,256.924 21,231.004 64,231.004 64,246.955 "/>
-<polyline fill="#31ABFF" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="64,211.954 
-	64,221.923 21,221.923 21,196.003 64,196.003 64,211.954 "/>
-<polyline fill="#31ABFF" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="64,176.952 
-	64,186.921 21,186.921 21,161.001 64,161.001 64,176.952 "/>
-<polyline fill="#31ABFF" stroke="#31ABFF" stroke-width="0.2319" stroke-miterlimit="10" stroke-opacity="0.64" points="64,141.951 
-	64,151.92 21,151.92 21,126 64,126 64,141.951 "/>
+<line display="none" fill="none" stroke="#31ABFF" stroke-miterlimit="10" x1="80.5" y1="126" x2="80.5" y2="607"/>
+<rect x="66" y="0.5" fill="#FFD38C" width="2" height="482"/>
+<polyline fill="#FE9C00" stroke="#FFD38C" stroke-miterlimit="10" points="43,470.469 43,480.438 0,480.438 0,454.518 43,454.518 
+	43,470.469 "/>
+<polyline fill="#FE9C00" stroke="#FFD38C" stroke-miterlimit="10" points="43,435.467 43,445.438 0,445.438 0,419.516 43,419.516 
+	43,435.467 "/>
+<polyline fill="#FE9C00" stroke="#FFD38C" stroke-miterlimit="10" points="43,400.466 43,410.435 0,410.435 0,384.516 43,384.516 
+	43,400.466 "/>
+<polyline fill="#FE9C00" stroke="#FFD38C" stroke-miterlimit="10" points="43,365.464 43,375.434 0,375.434 0,349.514 43,349.514 
+	43,365.464 "/>
+<polyline fill="#FE9C00" stroke="#FFD38C" stroke-miterlimit="10" points="43,330.463 43,340.432 0,340.432 0,314.512 43,314.512 
+	43,330.463 "/>
+<polyline fill="#FE9C00" stroke="#FFD38C" stroke-miterlimit="10" points="43,295.461 43,305.432 0,305.432 0,279.51 43,279.51 
+	43,295.461 "/>
+<polyline fill="#FE9C00" stroke="#FFD38C" stroke-miterlimit="10" points="43,260.46 43,270.429 0,270.429 0,244.509 43,244.509 
+	43,260.46 "/>
+<polyline fill="#FE9C00" stroke="#FFD38C" stroke-miterlimit="10" points="43,225.459 43,235.428 0,235.428 0,209.508 43,209.508 
+	43,225.459 "/>
+<polyline fill="#FE9C00" stroke="#FFD38C" stroke-miterlimit="10" points="43,190.458 43,200.427 0,200.427 0,174.507 43,174.507 
+	43,190.458 "/>
+<polyline fill="#FE9C00" stroke="#FFD38C" stroke-miterlimit="10" points="43,155.456 43,165.425 0,165.425 0,139.505 43,139.505 
+	43,155.456 "/>
+<polyline fill="#FE9C00" stroke="#FFD38C" stroke-miterlimit="10" points="43,120.455 43,130.424 0,130.424 0,104.504 43,104.504 
+	43,120.455 "/>
+<polyline fill="#FE9C00" stroke="#FFD38C" stroke-miterlimit="10" points="43,85.454 43,95.423 0,95.423 0,69.503 43,69.503 
+	43,85.454 "/>
+<polyline fill="#FE9C00" stroke="#FFD38C" stroke-miterlimit="10" points="43,50.452 43,60.421 0,60.421 0,34.501 43,34.501 
+	43,50.452 "/>
+<polyline fill="#FE9C00" stroke="#FFD38C" stroke-miterlimit="10" points="43,15.451 43,25.42 0,25.42 0,-0.5 43,-0.5 43,15.451 "/>
 </svg>
