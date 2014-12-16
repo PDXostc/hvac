@@ -84,6 +84,7 @@ function bigClick(item) {
  * @static
  */
 
+var carIndicator;
 var init = function () {
 	console.log("init()");
     $("input[name='add_item_button']").click(addItemClick);
@@ -92,6 +93,14 @@ var init = function () {
 
     var hvacIndicator = new hvacController();
 
+    if(!carIndicator)
+        $(document).on("carIndicatorReady", setup_ui);
+    else
+        setup_ui();
+};
+
+function setup_ui() {
+    console.log("setup_ui() called!");
 	$(".noUiSliderLeft").noUiSlider({
 	    range : [ 0, 14 ],
 	    step : 1,
@@ -177,7 +186,7 @@ var init = function () {
 		hvacIndicator.onRearDefrostChanged(newValue);
 	    }
 	});
-};
+}
 
 
 /**
@@ -186,7 +195,7 @@ var init = function () {
  * @param init {function} Callback function for initialize Store.
  * @static
  **/
-$(document).on("carIndicatorReady", init);
+$(document).ready(init);
 
 /**
  * Applies selected theme to application icons 
