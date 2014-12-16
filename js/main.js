@@ -83,15 +83,14 @@ function bigClick(item) {
  * @method init
  * @static
  */
-
-var carIndicator;
+var hvacIndicator;
 var init = function () {
 	console.log("init()");
     $("input[name='add_item_button']").click(addItemClick);
     $("input[name='small_button']").click(smallClick);
     $("input[name='big_button']").click(bigClick);
 
-    var hvacIndicator = new hvacController();
+    hvacIndicator = new hvacController();
 
     if(!carIndicator)
         $(document).on("carIndicatorReady", setup_ui);
