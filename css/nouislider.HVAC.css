@@ -271,8 +271,8 @@ background-size: 68%;
 	}
 	.noUiSliderRight.connect a,
 	.noUiSliderRight.connect.lower {
-		/*background: #b2a98f;*/
-		background:url("../images/temp_bar_on_right.svg") no-repeat right bottom;
+background: url("../images/temp_bar_on_right.svg") no-repeat 18px 4px;
+background-size: 78%;
 	}
 	
 	#audioSettings .noUiSliderRight.connect a{

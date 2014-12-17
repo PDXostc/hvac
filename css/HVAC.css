@@ -40,12 +40,12 @@ top: 13em;
 }
 
 .noUiSliderRight.vertical {
-width: 3em;
-height: 24.5em;
+width: 12.1%;
+height: 724px;
 }
 .noUiSliderRight {
 position: absolute;
-left: 31.9em;
+left: 30.9em;
 top: 13em;
 height: 40%;
 }
@@ -331,13 +331,15 @@ width: 100%;
 
 /*************lower half******************/
 .fanSpeedOn{
-	width:0;/*42.083333%; 303/720*/
-	height:9.4%; /*94/1000*/
-	background:url("../images/fan_bar_on.svg") no-repeat;
-	position:absolute;
-	left:33.3%;
-	top:57.7%;
-	z-index:0;
+width: 0;
+height: 9.4%;
+background: url("../images/fan_bar_on.svg") no-repeat;
+position: absolute;
+left: 11.9em;
+top: 38.4em;
+bottom: 25.7em;
+z-index: 0;
+
 }
 
 
