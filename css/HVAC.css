@@ -18,6 +18,47 @@
 * Incoming Code:        GStreamer 0.93, <link>
 *
 */
+
+/*UI Slider stuff*/
+
+
+
+.noUiSliderLeft.vertical {
+width: 3em;
+height: 24.5em;
+}
+.noUiSliderLeft {
+position: absolute;
+left: 1em;
+top: 13em;
+
+}
+
+.noUiSliderRight.vertical {
+width: 3em;
+height: 24.5em;
+}
+.noUiSliderRight {
+position: absolute;
+left: 31.9em;
+top: 13em;
+height: 40%;
+}
+
+.noUiSliderFan.horizontal {
+width: 15.3em;
+height: 4.7em;
+}
+.noUiSliderFan {
+position: absolute;
+left: 11.8em;
+top: 38.4em;
+/* top: 63.2%; */
+height: 12%;
+}
+
+
+/*end UI slider stuff*/
 body {
 	font-family: "Droid Sans", sans-serif;
 	background-color: rgb(0,0,0);
@@ -98,7 +139,7 @@ margin: 0 1.4em 0 3.6em;
 /*********LEFT HEAT SEAT BUTTON************/
 .left_seat_btn{
 	width:22.08333333%;/*159/720*/
-	height:12.9%;/*129/1000*/
+	height: 6.4em;
 	position:absolute;
 	left:21.1111%; /*152/720*/
 	top:22%;
@@ -114,22 +155,22 @@ margin: 0 1.4em 0 3.6em;
 }
 
 .left_heat_seat_on{
-	margin: 0 0 36px 0;
+	height: 100%;
 	background:url("../images/left_heat_seat_on.svg") no-repeat bottom;
 	z-index:4;
 	width:100%;
 	position:absolute;
-	bottom:0;
+	bottom: 0;
 	background-size:100%;	
 }
 .left_heat_seat_on.stage1{
 	height:0;
 }
 .left_heat_seat_on.stage2{
-	height:34%;
+	height:44%;
 }
 .left_heat_seat_on.stage3{
-	height:50%;
+	height:64%;
 }
 .left_heat_seat_on.stage4{
 	height:100%;
@@ -138,7 +179,7 @@ margin: 0 1.4em 0 3.6em;
 /*********RIGHT HEAT SEAT BUTTON************/
 .right_seat_btn{
 	width:22.08333333%;/*159/720*/
-	height:12.9%;/*129/1000*/
+	height: 6.4em;
 	position:absolute;
 	right:21.1111%; /*152/720*/
 	top:22%;
@@ -154,12 +195,12 @@ margin: 0 1.4em 0 3.6em;
 }
 
 .right_heat_seat_on{
-	margin: 0 0 36px 0;
+	height: 100%;
 	background:url("../images/right_heat_seat_on.svg") no-repeat bottom;
 	z-index:4;
 	width:100%;
 	position:absolute;
-	bottom:0;
+	bottom: 0;
 	background-size:100%;	
 }
 
@@ -167,10 +208,10 @@ margin: 0 1.4em 0 3.6em;
 	height:0;
 }
 .right_heat_seat_on.stage2{
-	height:34%;
+	height:44%;
 }
 .right_heat_seat_on.stage3{
-	height:50%;
+	height:64%;
 }
 .right_heat_seat_on.stage4{
 	height:100%;
@@ -178,22 +219,22 @@ margin: 0 1.4em 0 3.6em;
 
 /*********LEFT NUM SLIDER************/
 
-.left_num_bg{
-	background:url("../images/left_number_bg.svg") no-repeat;
-	width:21.9444444%;/*158/720*/
-	height: 18.1%;
-	position:absolute;
-	left:21.1111%; /*152/720*/
-	top:35%;
-	overflow:hidden;
-	z-index:4;	
-	background-size:100%;	
+.left_num_bg {
+background: url("../images/left_number_bg.svg") no-repeat;
+width: 21.9444444%;
+height: 11.5em;
+position: absolute;
+left: 7.6em;
+top: 25.1em;
+overflow: hidden;
+z-index: 4;
+background-size: 100%;
 }
 
 .left_num_cover{
 	background:url("../images/left_number_cover.svg") no-repeat;
 	width:21.9444444%;/*158/720*/
-	height:23.1%;/*231/1000*/
+	height: 11.6em;
 	position:absolute;
 	left:21.1111%; /*152/720*/
 	top:35%;
@@ -202,11 +243,11 @@ margin: 0 1.4em 0 3.6em;
 	background-size:100%;    
 }
 
-.scrollable.left{
-	height: 100%;
-	position:absolute;
-	width:100%;
-	top:25%;
+.scrollable.left {
+height: 11.5em;
+position: absolute;
+width: 100%;
+
 }
 
 .scrollable.left ul{
@@ -227,25 +268,26 @@ margin: 0 1.4em 0 3.6em;
 	text-align:left;
 	padding-left:5%;
 	position:relative;
+	font-size: 9rem;
 }
 /*********RIGHT NUM SLIDER************/
 
-.right_num_bg{
-	background:url("../images/right_number_bg.svg") no-repeat;
-	width:21.9444444%;/*158/720*/
-	height: 18.1%;
-	position:absolute;
-	right:21.1111%; /*152/720*/
-	top:35%;
-	overflow:hidden;
-	z-index:4;
-	background-size:100%;		
+.right_num_bg {
+background: url("../images/right_number_bg.svg") no-repeat;
+width: 21.9444444%;
+height: 11.5em;
+position: absolute;
+right: 7.6em;
+top: 25.1em;
+overflow: hidden;
+z-index: 4;
+background-size: 100%;
 }
 
 .right_num_cover{
 	background:url("../images/right_number_cover.svg") no-repeat;
 	width:21.9444444%;/*158/720*/
-	height:23.1%;/*231/1000*/
+	height: 11.6em;
 	position:absolute;
 	right:21.1111%; /*152/720*/
 	top:35%;
@@ -254,11 +296,11 @@ margin: 0 1.4em 0 3.6em;
 	background-size:100%;    
 }
 
-.scrollable.right{
-	height: 100%;
-	position:absolute;
-	width:100%;
-	top:25%;
+.scrollable.right {
+height: 11.5em;
+position: absolute;
+width: 100%;
+
 }
 
 .scrollable.right ul{
@@ -279,6 +321,7 @@ margin: 0 1.4em 0 3.6em;
 	text-align:left;
 	padding-left:16%;
 	position:relative;
+	font-size: 9rem;
 }
 
 /*************lower half******************/
@@ -297,7 +340,7 @@ margin: 0 1.4em 0 3.6em;
 .fan_dir_down_btn{
 	background:url("../images/fan_dir_down_off.svg") no-repeat;
 	width:17.08333333%;/*123/720*/
-	height:9.7%;/*97/1000*/
+	height:4.8em;
 	top:58.75%;/*20/1000*/
 	left:3.333333%; /*24/720*/
 	position:absolute;
@@ -305,11 +348,12 @@ margin: 0 1.4em 0 3.6em;
 }
 .fan_dir_down_btn.on{
 	background:url("../images/fan_dir_down_on.svg") no-repeat;
+	background-size:100%;
 }
 .fan_dir_right_btn{
 	background:url("../images/fan_dir_right_off.svg") no-repeat;	
 	width:17.08333333%;/*123/720*/
-	height:9.7%;/*97/1000*/
+	height:4.4em;
 	top:67.75%;/*20/1000*/
 	left:3.333333%; /*24/720*/
 	position:absolute;
@@ -318,12 +362,13 @@ margin: 0 1.4em 0 3.6em;
 
 .fan_dir_right_btn.on{
 	background:url("../images/fan_dir_right_on.svg") no-repeat;
+	background-size:100%;
 }
 
 .fan_dir_up_btn{
 	background:url("../images/fan_dir_up_off.svg") no-repeat;
 	width:17.08333333%;/*123/720*/
-	height:8.8%;/*88/1000*/
+	height:4.4em;
 	top:76.1%;/*20/1000*/
 	left:3.333333%; /*24/720*/
 	position:absolute;
@@ -331,6 +376,7 @@ margin: 0 1.4em 0 3.6em;
 }
 .fan_dir_up_btn.on{
 	background:url("../images/fan_dir_up_on.svg") no-repeat;
+	background-size:100%;
 }
 
 
@@ -338,7 +384,7 @@ margin: 0 1.4em 0 3.6em;
 .fan_control_ac{
 	background:url("../images/fan_control_ac_off.svg") no-repeat;
 	width:15.555556%;/*112/720*/
-	height:8.8%;/*88/1000*/
+	height:4.4em;
 	top:67.75%;
 	left:24.333%; /*24/720*/
 	position:absolute;
@@ -346,12 +392,13 @@ margin: 0 1.4em 0 3.6em;
 }
 .fan_control_ac.on{
 	background:url("../images/fan_control_ac_on.svg") no-repeat;
+	background-size:100%;
 }
 
 .fan_control_auto{
 	background:url("../images/fan_control_auto_off.svg") no-repeat;
 	width:15.416667%;/*111/720*/
-	height:8.8%;/*88/1000*/
+	height:4.4em;
 	top:67.75%;
 	left:42.333%; /*24/720*/
 	position:absolute;
@@ -359,12 +406,13 @@ margin: 0 1.4em 0 3.6em;
 }
 .fan_control_auto.on{
 	background:url("../images/fan_control_auto_on.svg") no-repeat;
+	background-size:100%;
 }
 
 .fan_control_circ{
 	background:url("../images/fan_control_circ_off.svg") no-repeat;
 	width:15.555556%;/*112/720*/
-	height:8.8%;/*88/1000*/
+	height:4.4em;
 	top:67.75%;
 	left:60.333%; /*24/720*/
 	position:absolute;
@@ -372,6 +420,7 @@ margin: 0 1.4em 0 3.6em;
 }
 .fan_control_circ.on{
 	background:url("../images/fan_control_circ_on.svg") no-repeat;
+	background-size:100%;
 }
 
 /***DEFROST****/
@@ -379,7 +428,7 @@ margin: 0 1.4em 0 3.6em;
 .defrost_max_btn{
 	background:url("../images/defrost_max_off.svg") no-repeat;
 	width:17.08333333%;/*123/720*/
-	height:9.7%;/*97/1000*/
+	height:4.8em;
 	top:58.75%;/*20/1000*/
 	right:3.333333%; /*24/720*/
 	position:absolute;
@@ -387,11 +436,12 @@ margin: 0 1.4em 0 3.6em;
 }
 .defrost_max_btn.on{
 	background:url("../images/defrost_max_on.svg") no-repeat;
+	background-size:100%;
 }
 .defrost_rear_btn{
 	background:url("../images/defrost_rear_off.svg") no-repeat;	
 	width:17.08333333%;/*123/720*/
-	height:9.7%;/*97/1000*/
+	height:4.4em;
 	top:67.75%;/*20/1000*/
 	right:3.333333%; /*24/720*/
 	position:absolute;
@@ -400,12 +450,13 @@ margin: 0 1.4em 0 3.6em;
 
 .defrost_rear_btn.on{
 	background:url("../images/defrost_rear_on.svg") no-repeat;
+	background-size:100%;
 }
 
 .defrost_front_btn{
 	background:url("../images/defrost_front_off.svg") no-repeat;
 	width:17.08333333%;/*123/720*/
-	height:8.8%;/*88/1000*/
+	height:4.4em;
 	top:76.1%;/*20/1000*/
 	right:3.333333%; /*24/720*/
 	position:absolute;
@@ -413,15 +464,17 @@ margin: 0 1.4em 0 3.6em;
 }
 .defrost_front_btn.on{
 	background:url("../images/defrost_front_on.svg") no-repeat;
+	background-size:100%;
 }		
 
 .bottomPanelLogoImg {
 	background: url('../images/jlr_logo_color.png') no-repeat center !important;
 }
+
 #settings {
   background: rgba(0,0,0,0.5);
 	width: 100%;
-	/*height: 100%;*/
+	
   z-index: 20;
   display:none;
 }
