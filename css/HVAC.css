@@ -19,13 +19,16 @@
 *
 */
 
-/****************************UI Slider stuff***************************/
+/* Adds z-index to #settingsPage due to z-indexing in sliderui js */
+#hvac-app #settingsPage {
+	z-index: 3;
+}
+
+/*UI Slider stuff*/
 
 div#noUiSliderLeft {
-width: 14.3%;
-height: 724px;
-
-
+	width: 14.1%;
+	height: 724px;
 }
 
 	/********LEFT*******/		
@@ -79,11 +82,11 @@ height: 724px;
 		top: -25%;
 	}
 }
-.noUiSliderLeft {
-position: absolute;
-left: 1em;
-top: 13em;
 
+.noUiSliderLeft {
+	position: absolute;
+	left: 1em;
+	top: 10em;
 }
 	.noUiSliderLeft.connect a,
 	.noUiSliderLeft.connect.lower {
@@ -103,6 +106,7 @@ background-size: 68%;
 		background: #efefe7;
 		background:url("../images/drag_knob.svg") no-repeat center center;
 		background-size:15%;
+		background-position-x: 91px;
 		
 	}
 	.noUiSliderLeft.disabled div {
@@ -141,10 +145,10 @@ height: 20.6em;
 		cursor: default;
 	}
 .noUiSliderRight {
-position: absolute;
-left: 30.9em;
-top: 13em;
-height: 40%;
+	position: absolute;
+	left: 30.9em;
+	top: 10em;
+	height: 40%;
 }
 	.noUiSliderRight a {
 		position: absolute;
@@ -213,7 +217,8 @@ background-size: 87%;
 		border-radius: 3px;
 		background: #efefe7;
 		background:url("/images/drag_knob.svg") no-repeat left center;
-		background-size:26%;						
+		background-size:26%;
+		background-position-x: 5px;				
 	}
 	.noUiSliderRight.disabled div {
 		background: transparent;
@@ -246,11 +251,11 @@ background-size: 87%;
 		cursor: default;
 	}
 .noUiSliderFan {
-position: absolute;
-left: 11.8em;
-top: 38.4em;
-/* top: 63.2%; */
-height: 12%;
+	position: absolute;
+	left: 11.8em;
+	top: 35.5em;
+	/* top: 63.2%; */
+	height: 12%;
 }
 	.noUiSliderFan a {
 		position: absolute;
@@ -337,46 +342,42 @@ right: 0;
 	.noUiSliderFan{
 		position:absolute;
 		left:33%;
-		top:55%;
+		top:66.95%;
 		/*top:63.2%;*/
 		height:12%;
 	}
 
 
-
-
-
-
-
-
-
-
-/****************************************end UI slider stuff**************************/
+/*end UI slider stuff*/
 body {
-	font-family: "Droid Sans", sans-serif;
-	background-color: rgb(0,0,0);
-	background-image: url("/DNA_common/../images/Hex-Background.jpg");
-	display: flex;
+	/*font-family: "Droid Sans", sans-serif;*/
+	/*background-color: rgb(0,0,0);*/
+	/*background-image: url("/DNA_common/../images/Hex-Background.jpg");*/
+	/*display: flex;*/
 }
+
 html {
-overflow: hidden;
+	/*overflow: hidden;*/
 }
+
 .clearBoth {
 	clear:both;
 }
+
 .borderColorTheme {
 	border-color: rgb(196, 196, 196);
 	border-color: rgba(196, 196, 196, 0.5);
 }
+
 .HVACwrapper {
-	width: 1080px;
-	height: 1920px;
-	overflow: hidden;		
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
-	margin: 114px 0;
-	color: rgb(196,196,196);
+	/*width: 1080px;*/
+	/*height: 1920px;*/
+	/*overflow: hidden;		*/
+	/*display: flex;*/
+	/*flex-direction: column;*/
+	/*flex-grow: 1;*/
+	/*margin: 114px 0;*/
+	/*color: rgb(196,196,196);*/
 }
 
 
@@ -389,47 +390,46 @@ overflow: hidden;
 	/*left:9.861111%;((720-578)/2)/720*/
 	background-size:100%;
 }
-/*********HAZARD BUTTON************/
-.hazard_btn{
-width: 20.9em;
-height: 4.1em;
-background: url("../images/hazard_off.svg") no-repeat;
-top: 5em;
-left: 7.5em;
-position: absolute;
-background-size: 100%;
-}
-.hazard_btn.on{
 
+/*********HAZARD BUTTON************/
+
+.hazard_btn{
+	width: 20.9em;
+	height: 4.1em;
+	background: url("../images/hazard_off.svg") no-repeat;
+	top: 40px;
+	left: 7.5em;
+	position: absolute;
+	background-size: 100%;
+}
+
+.hazard_btn.on{
 	background:url("../images/hazard_on.svg") no-repeat;
 	background-size:100%;
-
 }
 
 .hazard_btn.blink{
-
 	background:url("../images/hazard_blink.svg") no-repeat;
-
 	background-size:100%;
 }
 
 .climate_labels {
-position: relative;
-width: 28em;
-height: 1.5em;
-top: 9em;
-left: 4em;
-
+	position: relative;
+	width: 28em;
+	height: 1.5em;
+	top: 9em;
+	left: 4em;
 }
 
 .label_borders {
-border-left: 67px solid #fe9c00;
-padding-left: 2%;
-float: left;
-margin: 0 1.4em 0 3.6em;
+	border-left: 67px solid #fe9c00;
+	padding-left: 2%;
+	float: left;
+	margin: 0 1.4em 0 3.6em;
 }
 
 /*********LEFT HEAT SEAT BUTTON************/
+
 .left_seat_btn{
 	width:22.08333333%;/*159/720*/
 	height: 6.4em;
@@ -441,7 +441,7 @@ margin: 0 1.4em 0 3.6em;
 .left_heat_seat_off{
 	background:url("../images/left_heat_seat_off.svg") no-repeat;
 	background-size:100%;	
-	z-index:4;
+	/*z-index:4;*/
 	width:100%;
 	height:100%;
 	position:absolute;		
@@ -450,26 +450,31 @@ margin: 0 1.4em 0 3.6em;
 .left_heat_seat_on{
 	height: 100%;
 	background:url("../images/left_heat_seat_on.svg") no-repeat bottom;
-	z-index:4;
+	/*z-index:4;*/
 	width:100%;
 	position:absolute;
 	bottom: 0;
 	background-size:100%;	
 }
+
 .left_heat_seat_on.stage1{
 	height:0;
 }
+
 .left_heat_seat_on.stage2{
 	height:44%;
 }
+
 .left_heat_seat_on.stage3{
 	height:64%;
 }
+
 .left_heat_seat_on.stage4{
 	height:100%;
 }
 
 /*********RIGHT HEAT SEAT BUTTON************/
+
 .right_seat_btn{
 	width:22.08333333%;/*159/720*/
 	height: 6.4em;
@@ -480,7 +485,7 @@ margin: 0 1.4em 0 3.6em;
 
 .right_heat_seat_off{
 	background:url("../images/right_heat_seat_off.svg") no-repeat;
-	z-index:4;
+	/*z-index:4;*/
 	width:100%;
 	height:100%;
 	position:absolute;	
@@ -490,7 +495,7 @@ margin: 0 1.4em 0 3.6em;
 .right_heat_seat_on{
 	height: 100%;
 	background:url("../images/right_heat_seat_on.svg") no-repeat bottom;
-	z-index:4;
+	/*z-index:4;*/
 	width:100%;
 	position:absolute;
 	bottom: 0;
@@ -500,12 +505,15 @@ margin: 0 1.4em 0 3.6em;
 .right_heat_seat_on.stage1{
 	height:0;
 }
+
 .right_heat_seat_on.stage2{
 	height:44%;
 }
+
 .right_heat_seat_on.stage3{
 	height:64%;
 }
+
 .right_heat_seat_on.stage4{
 	height:100%;
 }
@@ -513,21 +521,15 @@ margin: 0 1.4em 0 3.6em;
 /*********LEFT NUM SLIDER************/
 
 .left_num_bg {
-background: url("../images/left_number_bg.svg") no-repeat;
-width: 21.9444444%;
-height: 11.5em;
-position: absolute;
-left: 7.6em;
-top: 25.1em;
-overflow: hidden;
-z-index: 4;
-background-size: 100%;
-}
-
-.temperature
-{
-    position: absolute;
-    top: 33.33%;
+	background: url("../images/left_number_bg.svg") no-repeat;
+	width: 21.9444444%;
+	height: 11.5em;
+	position: absolute;
+	left: 7.6em;
+	top: 35.1%;
+	overflow: hidden;
+	/*z-index: 4;*/
+	background-size: 100%;
 }
 
 .left_num_cover{
@@ -537,16 +539,15 @@ background-size: 100%;
 	position:absolute;
 	left:21.1111%; /*152/720*/
 	top:35%;
-	z-index:5;
-    pointer-events:none;
+	/*z-index:5;*/
+  pointer-events:none;
 	background-size:100%;    
 }
 
 .scrollable.left {
-height: 11.7em;
-position: absolute;
-width: 100%;
-
+	height: 11.5em;
+	position: absolute;
+	width: 100%;
 }
 
 .scrollable.left ul{
@@ -569,18 +570,19 @@ width: 100%;
 	position:relative;
 	font-size: 9rem;
 }
+
 /*********RIGHT NUM SLIDER************/
 
 .right_num_bg {
-background: url("../images/right_number_bg.svg") no-repeat;
-width: 21.9444444%;
-height: 11.5em;
-position: absolute;
-right: 7.6em;
-top: 25.1em;
-overflow: hidden;
-z-index: 4;
-background-size: 100%;
+	background: url("../images/right_number_bg.svg") no-repeat;
+	width: 21.9444444%;
+	height: 11.5em;
+	position: absolute;
+	right: 7.6em;
+	top: 35%;
+	overflow: hidden;
+	/*z-index: 4;*/
+	background-size: 100%;
 }
 
 .right_num_cover{
@@ -590,15 +592,15 @@ background-size: 100%;
 	position:absolute;
 	right:21.1111%; /*152/720*/
 	top:35%;
-	z-index:5;
-    pointer-events:none;
+	/*z-index:5;*/
+  pointer-events:none;
 	background-size:100%;    
 }
 
 .scrollable.right {
-height: 11.7em;
-position: absolute;
-width: 100%;
+	height: 11.5em;
+	position: absolute;
+	width: 100%;
 
 }
 
@@ -625,15 +627,14 @@ width: 100%;
 
 /*************lower half******************/
 .fanSpeedOn{
-width: 0;
-height: 9.4%;
-background: url("../images/fan_bar_on.svg") no-repeat;
-position: absolute;
-left: 11.9em;
-top: 38.4em;
-bottom: 25.7em;
-z-index: 0;
-
+	width: 0;
+	height: 9.4%;
+	background: url("../images/fan_bar_on.svg") no-repeat;
+	position: absolute;
+	left: 11.9em;
+	top: 35.53em;
+	bottom: 25.7em;
+	/*z-index: 0;*/
 }
 
 
@@ -642,20 +643,22 @@ z-index: 0;
 	background:url("../images/fan_dir_down_off.svg") no-repeat;
 	width:17.08333333%;/*123/720*/
 	height:4.8em;
-	top:58.75%;/*20/1000*/
+	top:69%;/*20/1000*/
 	left:3.333333%; /*24/720*/
 	position:absolute;
 	background-size:100%;
 }
+
 .fan_dir_down_btn.on{
 	background:url("../images/fan_dir_down_on.svg") no-repeat;
 	background-size:100%;
 }
+
 .fan_dir_right_btn{
 	background:url("../images/fan_dir_right_off.svg") no-repeat;	
 	width:17.08333333%;/*123/720*/
 	height:4.4em;
-	top:67.75%;/*20/1000*/
+	top:78%;/*20/1000*/
 	left:3.333333%; /*24/720*/
 	position:absolute;
 	background-size:100%;
@@ -670,7 +673,7 @@ z-index: 0;
 	background:url("../images/fan_dir_up_off.svg") no-repeat;
 	width:17.08333333%;/*123/720*/
 	height:4.4em;
-	top:76.1%;/*20/1000*/
+	top:86.2%;/*20/1000*/
 	left:3.333333%; /*24/720*/
 	position:absolute;
 	background-size:100%;
@@ -680,17 +683,16 @@ z-index: 0;
 	background-size:100%;
 }
 
-
-
 .fan_control_ac{
 	background:url("../images/fan_control_ac_off.svg") no-repeat;
 	width:15.555556%;/*112/720*/
 	height:4.4em;
-	top:67.75%;
+	top:78.1%;
 	left:24.333%; /*24/720*/
 	position:absolute;
 	background-size:100%;
 }
+
 .fan_control_ac.on{
 	background:url("../images/fan_control_ac_on.svg") no-repeat;
 	background-size:100%;
@@ -700,11 +702,12 @@ z-index: 0;
 	background:url("../images/fan_control_auto_off.svg") no-repeat;
 	width:15.416667%;/*111/720*/
 	height:4.4em;
-	top:67.75%;
+	top:78.1%;
 	left:42.333%; /*24/720*/
 	position:absolute;
 	background-size:100%;
 }
+
 .fan_control_auto.on{
 	background:url("../images/fan_control_auto_on.svg") no-repeat;
 	background-size:100%;
@@ -714,11 +717,12 @@ z-index: 0;
 	background:url("../images/fan_control_circ_off.svg") no-repeat;
 	width:15.555556%;/*112/720*/
 	height:4.4em;
-	top:67.75%;
+	top:78.1%;
 	left:60.333%; /*24/720*/
 	position:absolute;
 	background-size:100%;
 }
+
 .fan_control_circ.on{
 	background:url("../images/fan_control_circ_on.svg") no-repeat;
 	background-size:100%;
@@ -730,20 +734,22 @@ z-index: 0;
 	background:url("../images/defrost_max_off.svg") no-repeat;
 	width:17.08333333%;/*123/720*/
 	height:4.8em;
-	top:58.75%;/*20/1000*/
+	top:69%;/*20/1000*/
 	right:3.333333%; /*24/720*/
 	position:absolute;
 	background-size:100%;
 }
+
 .defrost_max_btn.on{
 	background:url("../images/defrost_max_on.svg") no-repeat;
 	background-size:100%;
 }
+
 .defrost_rear_btn{
 	background:url("../images/defrost_rear_off.svg") no-repeat;	
 	width:17.08333333%;/*123/720*/
 	height:4.4em;
-	top:67.75%;/*20/1000*/
+	top:78%;/*20/1000*/
 	right:3.333333%; /*24/720*/
 	position:absolute;
 	background-size:100%;
@@ -758,11 +764,12 @@ z-index: 0;
 	background:url("../images/defrost_front_off.svg") no-repeat;
 	width:17.08333333%;/*123/720*/
 	height:4.4em;
-	top:76.1%;/*20/1000*/
+	top:86.2%;/*20/1000*/
 	right:3.333333%; /*24/720*/
 	position:absolute;
 	background-size:100%;
 }
+
 .defrost_front_btn.on{
 	background:url("../images/defrost_front_on.svg") no-repeat;
 	background-size:100%;
@@ -775,32 +782,34 @@ z-index: 0;
 #settings {
   background: rgba(0,0,0,0.5);
 	width: 100%;
-	
-  z-index: 20;
+  /*z-index: 20;*/
   display:none;
 }
+
 #overlay {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    opacity: 0.8;
-    z-index: 19;
-    display: none;
+	position: fixed; 
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0.8;
+	/*z-index: 19;*/
+	display: none;
 }
+
 #inputBox	{
 	left: 12%;
 	top: 70px; /*needs to be at least this high for the keyboard*/
 	width: 550px;
-  	background: rgba(0,0,0,0.8);
-  	z-index: 20;
-  	display: none;
-  	text-align: center;
-  	padding-bottom: 5%;
+	background: rgba(0,0,0,0.8);
+	/*z-index: 20;*/
+	display: none;
+	text-align: center;
+	padding-bottom: 5%;
 }
-form	{
+
+form {
 	position: relative;
 	top:15%;
 	margin: 0 auto;
@@ -809,10 +818,12 @@ form	{
 	padding: 2%;
 	padding-bottom: 4%;
 }
+
 .text {
 	padding: 30px 0;
 	text-align: right;
 }
+
 .textBox {
 	padding-left: 1%;
 	margin: 1% 0 4% 2%;
@@ -856,15 +867,18 @@ form	{
 	width: 67px;
 	height: 67px;
 }
+
 .labelBox	{
 	float: left;
 	padding: 15px 20px;
 }
+
 .inputNumberBox	{
 	float: left;
 	margin-top: 25px;
 	width: 350px;
 }
+
 .inputNumber	{
 	margin-bottom: 20px;
 	width: 215px;
@@ -876,9 +890,11 @@ form	{
 	background-color: rgb(0, 0, 0);
 	background-color: rgba(0, 0, 0, 0.2);
 }
+
 .inputNumber:focus {
 	outline: none;
 }
+
 .inputNumberBox .deleteButton {
 	display: inline-block;
 	vertical-align: top;
@@ -890,11 +906,13 @@ form	{
 	background-repeat: no-repeat;
 	cursor: pointer;
 }
+
 .loadingSpinnerHistory {
 	top:130px;
 	width:100%;
 	height:100%;
 }
+
 .submitButton {
 	height: 43px;
 	margin: 5%;
@@ -904,6 +922,7 @@ form	{
 	text-align: center;
 	padding: 0 20px;
 }
+
 #submit, #cancel {
 	background: none;
 	border: none;
@@ -924,6 +943,7 @@ form	{
 	text-align: center;
 	padding: 0 20px;
 }
+
 #setup {
 	background: none;
 	border: none;
@@ -933,7 +953,5 @@ form	{
 	color: rgba(255, 255, 255, 1.0);
 	line-height: 38px;
 }
-
-
 
 /* end of buttons from settings.css */
