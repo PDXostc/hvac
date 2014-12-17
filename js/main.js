@@ -86,16 +86,16 @@ function bigClick(item) {
 var hvacIndicator;
 var init = function () {
 	console.log("init()");
-    $("input[name='add_item_button']").click(addItemClick);
-    $("input[name='small_button']").click(smallClick);
-    $("input[name='big_button']").click(bigClick);
 
-    hvacIndicator = new hvacController();
+    if(!hvacIndicator)
+    {
+        hvacIndicator = new hvacController();
 
-    if(!carIndicator)
-        $(document).on("carIndicatorReady", setup_ui);
-    else
-        setup_ui();
+        if(!carIndicator)
+            $(document).on("carIndicatorReady", setup_ui);
+        else
+            setup_ui();
+    }
 };
 
 function setup_ui() {
