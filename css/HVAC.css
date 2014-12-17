@@ -19,18 +19,65 @@
 *
 */
 
-/*UI Slider stuff*/
+/****************************UI Slider stuff***************************/
 
 div#noUiSliderLeft {
-width: 14.1%;
+width: 14.3%;
 height: 724px;
 
 
 }
 
-.noUiSliderLeft.vertical {
-width: 4.3em;
-height: 20.6em;
+	/********LEFT*******/		
+		
+	.noUiSliderLeft,
+	.noUiSliderLeft * {
+-webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+		box-sizing: border-box;
+-webkit-user-select: none;
+   -moz-user-select: none;
+	-ms-user-select: none;
+		display: block;
+		cursor: default;
+	}
+	.noUiSliderLeft {
+		position: relative;
+	}
+	.noUiSliderLeft a {
+		position: absolute;
+		z-index: 1;
+	}
+	.noUiSliderLeft a:nth-child(2) {
+		background: inherit !important;
+	}
+	.noUiSliderLeft.vertical a {
+		width: 100%;
+		bottom: 0;
+	}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.noUiSliderLeft:before,
+	body.TOUCH,
+	.noUiSliderLeft div {
+		-ms-touch-action: none;
+	}
+	.noUiSliderLeft:before {
+		display: block;
+		position: absolute;
+		width: 150%;
+		left: -25%;
+		height: 400%;
+		top: -150%;
+		content: "";
+		z-index: -1;
+	}
+	.noUiSliderLeft.vertical:before {
+		width: 400%;
+		left: -150%;
+		height: 150%;
+		top: -25%;
+	}
 }
 .noUiSliderLeft {
 position: absolute;
@@ -38,22 +85,166 @@ left: 1em;
 top: 13em;
 
 }
+	.noUiSliderLeft.connect a,
+	.noUiSliderLeft.connect.lower {
+		
+background: url("../images/temp_bar_on_left.svg") no-repeat 1px 5px;
+background-size: 68%;	
+	}
+	.noUiSliderLeft.disabled,
+	.noUiSliderLeft.disabled.connect.lower a {
+		background: #ccc;
+		box-shadow: none;
+	}
+	.noUiSliderLeft div {
+		height: 100px;
 
-.noUiSliderRight.vertical {
-width: 12.1%;
-height: 724px;
+		border-radius: 3px;
+		background: #efefe7;
+		background:url("../images/drag_knob.svg") no-repeat center center;
+		background-size:15%;
+		
+	}
+	.noUiSliderLeft.disabled div {
+		background: transparent;
+	}
+.noUiSliderLeft.vertical {
+width: 4.3em;
+height: 20.6em;
 }
+	.noUiSliderLeft.vertical div {
+		margin: -50px -60px 0 -5px;
+	}
+	.noUiSliderLeft{
+		left: 0.9em;
+		top:18%;
+		height:40%;
+	}
+
+
+
+
+
+		
+		
+	/*********RIGHT*******/
+	
+	.noUiSliderRight,
+	.noUiSliderRight * {
+-webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+		box-sizing: border-box;
+-webkit-user-select: none;
+   -moz-user-select: none;
+	-ms-user-select: none;
+		display: block;
+		cursor: default;
+	}
 .noUiSliderRight {
 position: absolute;
 left: 30.9em;
 top: 13em;
 height: 40%;
 }
-
-.noUiSliderFan.horizontal {
-width: 15.3em;
-height: 4.7em;
+	.noUiSliderRight a {
+		position: absolute;
+		z-index: 1;
+	}
+	.noUiSliderRight a:nth-child(2) {
+		background: inherit !important;
+	}
+	.noUiSliderRight.vertical a {
+		width: 100%;
+		bottom: 0;
+	}
+	.noUiSliderRight.horizontal a {
+		height: 100%;
+		right: 0;
+	}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.noUiSliderRight:before,
+	body.TOUCH,
+	.noUiSliderRight div {
+		-ms-touch-action: none;
+	}
+	.noUiSliderRight:before {
+		display: block;
+		position: absolute;
+		width: 150%;
+		left: -25%;
+		height: 400%;
+		top: -150%;
+		content: "";
+		z-index: -1;
+	}
+	.noUiSliderRight.vertical {
+width: 12.1%;
+height: 724px;
 }
+}
+	.noUiSliderRight {
+		/*border: 1px solid #908d84;*/
+		border-radius: 3px;
+	}
+	.noUiSliderRight.connect a,
+	.noUiSliderRight.connect.lower {
+background: url("../images/temp_bar_on_right.svg") no-repeat 18px 4px;
+background-size: 87%;
+	}
+	
+	#audioSettings .noUiSliderRight.connect a{
+		background:url("/images/temp_bar_on_right.svg") no-repeat right bottom;
+		background-size:85.9%;
+	}
+	
+	.noUiSliderRight,
+	.noUiSliderRight.connect.lower a {
+		
+		/*background: #d9d7cb;*/
+		/*box-shadow: inset 0px 1px 7px #b6b4a8;*/
+	}
+	.noUiSliderRight.disabled,
+	.noUiSliderRight.disabled.connect.lower a {
+		background: #ccc;
+		box-shadow: none;
+	}
+	.noUiSliderRight div {
+		height: 100px;
+		border-radius: 3px;
+		background: #efefe7;
+		background:url("/images/drag_knob.svg") no-repeat left center;
+		background-size:26%;						
+	}
+	.noUiSliderRight.disabled div {
+		background: transparent;
+	}
+	.noUiSliderRight.vertical {
+		width: 4em;
+		height: 24.3em;
+	}
+	.noUiSliderRight.vertical div {
+		margin: -50px -5px 0 0;
+	}
+	.noUiSliderRight{
+		position: absolute;
+		left: 30.9em;
+		top: 18%;
+		height:40%;
+	}
+	
+/*********FAN*******/
+	
+	.noUiSliderFan,
+	.noUiSliderFan * {
+-webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+		box-sizing: border-box;
+-webkit-user-select: none;
+   -moz-user-select: none;
+	-ms-user-select: none;
+		display: block;
+		cursor: default;
+	}
 .noUiSliderFan {
 position: absolute;
 left: 11.8em;
@@ -61,9 +252,106 @@ top: 38.4em;
 /* top: 63.2%; */
 height: 12%;
 }
+	.noUiSliderFan a {
+		position: absolute;
+		z-index: 1;
+	}
+	.noUiSliderFan a:nth-child(2) {
+		background: inherit !important;
+	}
+	.noUiSliderFan.vertical a {
+		width: 100%;
+		bottom: 0;
+	}
+.noUiSliderFan.horizontal {
+width: 15.3em;
+height: 4.7em;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.noUiSliderFan:before,
+	body.TOUCH,
+	.noUiSliderFan div {
+		-ms-touch-action: none;
+	}
+	.noUiSliderFan:before {
+		display: block;
+		position: absolute;
+		width: 150%;
+		left: -25%;
+		height: 400%;
+		top: -150%;
+		content: "";
+		z-index: -1;
+	}
+	.noUiSliderFan.vertical:before {
+		width: 400%;
+		left: -150%;
+		height: 150%;
+		top: -25%;
+	}
+}
+	.noUiSliderFan {
+		/*border: 1px solid #908d84;*/
+		border-radius: 3px;
+	}
+	.noUiSliderFan.connect a,
+	.noUiSliderFan.connect.lower {
+		/*background: #b2a98f;*/
+		/*background:url("/images/temp_bar_on_right.svg") no-repeat right bottom;	*/
+		background-size:85.9%;
+	}
+	.noUiSliderFan,
+	.noUiSliderFan.connect.lower a {
+		
+		/*background: #d9d7cb;*/
+		/*box-shadow: inset 0px 1px 7px #b6b4a8;*/
+	}
+	.noUiSliderFan.disabled,
+	.noUiSliderFan.disabled.connect.lower a {
+		background: #ccc;
+		box-shadow: none;
+	}
+	.noUiSliderFan div {
+		width:80px;
+		height: 100%;
+		border-radius: 3px;
+		background: #efefe7;
+		background:url("/images/drag_knob.svg") no-repeat center bottom;
+		background-size:26%;						
+	}
+	.noUiSliderFan.disabled div {
+		background: transparent;
+	}
+	.noUiSliderFan.horizontal {
+		width: 42.5%;
+		height: 10.75%;
+	}
+	.noUiSliderFan.horizontal a {
+height: 48%;
+right: 0;
+}
+	.noUiSliderFan.horizontal div {
+		margin: 0 0 0 -40px;
+	}
+	
+	.noUiSliderFan{
+		position:absolute;
+		left:33%;
+		top:55%;
+		/*top:63.2%;*/
+		height:12%;
+	}
 
 
-/*end UI slider stuff*/
+
+
+
+
+
+
+
+
+/****************************************end UI slider stuff**************************/
 body {
 	font-family: "Droid Sans", sans-serif;
 	background-color: rgb(0,0,0);
