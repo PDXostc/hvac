@@ -84,8 +84,8 @@ function bigClick(item) {
  * @static
  */
 var hvacIndicator;
-var init = function () {
-	console.log("init()");
+var init_hvac = function () {
+	console.log("init_hvac()");
 
     if(!hvacIndicator)
     {
@@ -194,7 +194,7 @@ function setup_ui() {
  * @param init {function} Callback function for initialize Store.
  * @static
  **/
-$(document).ready(init);
+$(document).ready(init_hvac);
 
 /**
  * Applies selected theme to application icons 
