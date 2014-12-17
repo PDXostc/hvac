@@ -21,11 +21,16 @@
 
 /*UI Slider stuff*/
 
+div#noUiSliderLeft {
+width: 14.1%;
+height: 724px;
 
+
+}
 
 .noUiSliderLeft.vertical {
-width: 3em;
-height: 24.5em;
+width: 4.3em;
+height: 20.6em;
 }
 .noUiSliderLeft {
 position: absolute;

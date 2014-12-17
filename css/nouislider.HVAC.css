@@ -172,9 +172,8 @@
 	.noUiSliderLeft.connect a,
 	.noUiSliderLeft.connect.lower {
 		
-		background:url("images/hvac/temp_bar_on_left.svg") no-repeat left bottom;
-		/*background-size:85.9%;	*/
-		/*background: #b2a98f;*/	
+background: url("../images/temp_bar_on_left.svg") no-repeat 1px 5px;
+background-size: 68%;	
 	}
 	.noUiSliderLeft.disabled,
 	.noUiSliderLeft.disabled.connect.lower a {
@@ -186,7 +185,7 @@
 
 		border-radius: 3px;
 		background: #efefe7;
-		background:url("images/hvac/drag_knob.svg") no-repeat center center;
+		background:url("../images/drag_knob.svg") no-repeat center center;
 		background-size:15%;
 		
 	}
@@ -273,7 +272,7 @@
 	.noUiSliderRight.connect a,
 	.noUiSliderRight.connect.lower {
 		/*background: #b2a98f;*/
-		background:url("images/hvac/temp_bar_on_right.svg") no-repeat right bottom;
+		background:url("../images/temp_bar_on_right.svg") no-repeat right bottom;
 	}
 	
 	#audioSettings .noUiSliderRight.connect a{
