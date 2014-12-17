@@ -84,18 +84,18 @@ function bigClick(item) {
  * @static
  */
 var hvacIndicator;
-var init = function () {
-	console.log("init()");
-    $("input[name='add_item_button']").click(addItemClick);
-    $("input[name='small_button']").click(smallClick);
-    $("input[name='big_button']").click(bigClick);
+var init_hvac = function () {
+	console.log("init_hvac()");
 
-    hvacIndicator = new hvacController();
+    if(!hvacIndicator)
+    {
+        hvacIndicator = new hvacController();
 
-    if(!carIndicator)
-        $(document).on("carIndicatorReady", setup_ui);
-    else
-        setup_ui();
+        if(!carIndicator)
+            $(document).on("carIndicatorReady", setup_ui);
+        else
+            setup_ui();
+    }
 };
 
 function setup_ui() {
@@ -194,7 +194,7 @@ function setup_ui() {
  * @param init {function} Callback function for initialize Store.
  * @static
  **/
-$(document).ready(init);
+$(document).ready(init_hvac);
 
 /**
  * Applies selected theme to application icons 
