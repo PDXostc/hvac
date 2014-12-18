@@ -524,6 +524,12 @@ z-index: 4;
 background-size: 100%;
 }
 
+.temperature
+{
+    position: absolute;
+    top: 33.33%;
+}
+
 .left_num_cover{
 	background:url("../images/left_number_cover.svg") no-repeat;
 	width:21.9444444%;/*158/720*/
@@ -537,7 +543,7 @@ background-size: 100%;
 }
 
 .scrollable.left {
-height: 11.5em;
+height: 11.7em;
 position: absolute;
 width: 100%;
 
@@ -590,7 +596,7 @@ background-size: 100%;
 }
 
 .scrollable.right {
-height: 11.5em;
+height: 11.7em;
 position: absolute;
 width: 100%;
 

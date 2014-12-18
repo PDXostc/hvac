@@ -210,7 +210,7 @@ function getTargetTemperatureSliderValue(temperature) {
 		value = 14;
 		switchAutoACOff();
 	} else {
-		value = (temperature + 29) - (temperature * 2);
+		value = 14-(temperature%15);
 	}
 	return value;
 }
@@ -302,7 +302,7 @@ hvacController.prototype.onTargetTemperatureRightChanged = function (newStatus) 
 	var value = getTargetTemperatureSliderValue(newStatus);
 	$("#noUiSliderRight").val(value);
 	$(".scrollable.right").find(".temperature").stop(true, true).animate({
-		"top": (-441.0606 + (value * +32.0) + '%')
+		"top": (-433 + (value * 33) + '%')
 	});
 };
 
@@ -322,7 +322,7 @@ hvacController.prototype.onTargetTemperatureLeftChanged = function (newStatus) {
 	var value = getTargetTemperatureSliderValue(newStatus);
 	$("#noUiSliderLeft").val(value);
 	$(".scrollable.left").find(".temperature").stop(true, true).animate({
-		"top": (-441.0606 + (value * +32.0) + '%')
+		"top": (-433 + (value * 33) + '%')
 	});
 };
 
