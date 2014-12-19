@@ -49,7 +49,7 @@ div#noUiSliderLeft {
 	}
 	.noUiSliderLeft a {
 		position: absolute;
-		z-index: 1;
+		z-index: 0 !important;
 	}
 	.noUiSliderLeft a:nth-child(2) {
 		background: inherit !important;
@@ -152,7 +152,7 @@ height: 20.6em;
 }
 	.noUiSliderRight a {
 		position: absolute;
-		z-index: 1;
+		z-index: 0 !important;
 	}
 	.noUiSliderRight a:nth-child(2) {
 		background: inherit !important;
@@ -545,7 +545,7 @@ html {
 }
 
 .scrollable.left {
-	height: 11.5em;
+	height: 11.7em;
 	position: absolute;
 	width: 100%;
 }
@@ -598,7 +598,7 @@ html {
 }
 
 .scrollable.right {
-	height: 11.5em;
+	height: 11.7em;
 	position: absolute;
 	width: 100%;
 
