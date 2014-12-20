@@ -24,6 +24,13 @@
 	z-index: 3;
 }
 
+/* Override for Settings list items */
+
+.settingElement {
+	margin: 0 40px; 
+}
+
+
 /*UI Slider stuff*/
 
 div#noUiSliderLeft {
