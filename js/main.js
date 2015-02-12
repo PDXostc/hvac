@@ -152,6 +152,7 @@ function setup_ui() {
     carIndicator.addListener({
 	    onAirRecirculationChanged : function(newValue) {
 		hvacIndicator.onAirRecirculationChanged(newValue);
+		//sendRVI("air_circ", newValue);
 	    },
 	    onFanChanged : function(newValue) {
 		hvacIndicator.onFanChanged(newValue);
@@ -194,7 +195,7 @@ function setup_ui() {
  * @param init {function} Callback function for initialize Store.
  * @static
  **/
-$(document).ready(init_hvac);
+$(document).ready(function(){onDepenancy("carIndicator.js",init_hvac)}); //$(document).ready(init_hvac);
 
 /**
  * Applies selected theme to application icons 
