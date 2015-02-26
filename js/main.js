@@ -95,6 +95,10 @@ var init_hvac = function () {
             $(document).on("carIndicatorReady", setup_ui);
         else
             setup_ui();
+		carIndicator.setStatus("targetTemperatureLeft", 15);
+		carIndicator.setStatus("targetTemperatureRight", 15);
+		carIndicator.setStatus("FrontTSetLeftCmd", 15);
+		carIndicator.setStatus("FrontTSetRightCmd", 15);
     }
 };
 
