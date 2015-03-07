@@ -153,41 +153,41 @@ function setup_ui() {
 	    }
 	});
 
-    carIndicator.addListener({
+	carIndicator.addListener({
 	    onAirRecirculationChanged : function(newValue) {
-		hvacIndicator.onAirRecirculationChanged(newValue);
-		//sendRVI("air_circ", newValue);
+			hvacIndicator.onAirRecirculationChanged(newValue);
+			//sendRVI("air_circ", newValue);
 	    },
 	    onFanChanged : function(newValue) {
-		hvacIndicator.onFanChanged(newValue);
+			hvacIndicator.onFanChanged(newValue);
 	    },
 	    onFanSpeedChanged : function(newValue) {
-		hvacIndicator.onFanSpeedChanged(newValue);
+			hvacIndicator.onFanSpeedChanged(newValue);
 	    },
 	    onTargetTemperatureRightChanged : function(newValue) {
-		hvacIndicator.onTargetTemperatureRightChanged(newValue);
+			hvacIndicator.onTargetTemperatureRightChanged(newValue);
 	    },
 	    onTargetTemperatureLeftChanged : function(newValue) {
-		hvacIndicator.onTargetTemperatureLeftChanged(newValue);
+			hvacIndicator.onTargetTemperatureLeftChanged(newValue);
 	    },
 	    onHazardChanged : function(newValue) {
-		hvacIndicator.onHazardChanged(newValue);
-		console.log("onHazardChanged: "+ newValue);
+			hvacIndicator.onHazardChanged(newValue);
+			console.log("onHazardChanged: "+ newValue);
 	    },
 	    onSeatHeaterRightChanged : function(newValue) {
-		hvacIndicator.onSeatHeaterRightChanged(newValue);
+			hvacIndicator.onSeatHeaterRightChanged(newValue);
 	    },
 	    onSeatHeaterLeftChanged : function(newValue) {
-		hvacIndicator.onSeatHeaterLeftChanged(newValue);
+			hvacIndicator.onSeatHeaterLeftChanged(newValue);
 	    },
 	    onAirflowDirectionChanged : function(newValue) {
-		hvacIndicator.onAirflowDirectionChanged(newValue);
+			hvacIndicator.onAirflowDirectionChanged(newValue);
 	    },
 	    onFrontDefrostChanged : function(newValue) {
-		hvacIndicator.onFrontDefrostChanged(newValue);
+			hvacIndicator.onFrontDefrostChanged(newValue);
 	    },
 	    onRearDefrostChanged : function(newValue) {
-		hvacIndicator.onRearDefrostChanged(newValue);
+			hvacIndicator.onRearDefrostChanged(newValue);
 	    }
 	});
 }
@@ -200,56 +200,3 @@ function setup_ui() {
  * @static
  **/
 $(document).ready(function(){onDepenancy("carIndicator.js",init_hvac)}); //$(document).ready(init_hvac);
-
-/**
- * Applies selected theme to application icons 
- * @method setThemeImageColor
- * @static
- **/
-function setThemeImageColor() {
-	var imageSource;
-	$('body').find('img').each(function() {
-		var self = this;
-		imageSource = $(this).attr('src');
-
-	    if (typeof(imageSource) !== 'undefined' && $(this.parentElement).hasClass('themeImage') == false) {
-	        console.log(imageSource);
-
-	        var img = new Image();
-	        var ctx = document.createElement('canvas').getContext('2d');
-
-	        img.onload = function () {
-	            var w = ctx.canvas.width = img.width;
-	            var h = ctx.canvas.height = img.height;
-	            ctx.fillStyle = ThemeKeyColor;
-	            ctx.fillRect(0, 0, w, h);
-	            ctx.globalCompositeOperation = 'destination-in';
-	            ctx.drawImage(img, 0, 0);
-
-	            $(self).attr('src', ctx.canvas.toDataURL());
-	            $(self).hide(0, function() { $(self).show();});
-	        };
-
-	        img.src = imageSource;
-	    }
-	});
-}
-
-function setupSpeechRecognition() {
-	console.log("Store setupSpeechRecognition");
-	Speech.addVoiceRecognitionListener({
-		onapplicationinstall : function() {
-			console.log("Speech application install invoked");
-			if (_applicationDetail.id !== undefined) {
-				StoreLibrary.installApp(_applicationDetail.id);
-			}
-		},
-		onapplicationuninstall : function() {
-			console.log("Speech application uninstall invoked");
-			if (_applicationDetail.id !== undefined) {
-				StoreLibrary.uninstallApp(_applicationDetail.id);
-			}
-		}
-
-	});
-}
