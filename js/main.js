@@ -200,3 +200,19 @@ function setup_ui() {
  * @static
  **/
 $(document).ready(function(){onDepenancy("carIndicator.js",init_hvac)}); //$(document).ready(init_hvac);
+
+
+// display grayed out seat heater graphics when the car
+// engine isn't running
+
+//$("#left_seat_btn").click(function() {
+/*	if (bootstrap.carIndicator.getStatus("EngineRunningstatus?")) {
+		$("#left_seat_btn").addClass("engine-off");
+		$("#right_seat_btn").addClass("engine-off");	
+		console.log("carIndicator status EngineRunningstatus");	
+	}
+	else {
+		$("#left_seat_btn").removeClass("engine-off");
+		$("#right_seat_btn").removeClass("engine-off");
+	}*/
+//});

@@ -437,6 +437,12 @@ html {
 
 /*********LEFT HEAT SEAT BUTTON************/
 
+/* this style indicates seat heaters are off */
+.engine-off {
+	opacity: 0.4;
+}
+
+/* only available when engine is running */
 .left_seat_btn{
 	width:22.08333333%;/*159/720*/
 	height: 6.4em;
@@ -481,7 +487,7 @@ html {
 }
 
 /*********RIGHT HEAT SEAT BUTTON************/
-
+/* only available when engine is running */
 .right_seat_btn{
 	width:22.08333333%;/*159/720*/
 	height: 6.4em;
@@ -814,16 +820,6 @@ html {
 	display: none;
 	text-align: center;
 	padding-bottom: 5%;
-}
-
-form {
-	position: relative;
-	top:15%;
-	margin: 0 auto;
-	width: 50%;
-	background-color: rgba(0,0,0,0.8);
-	padding: 2%;
-	padding-bottom: 4%;
 }
 
 .text {
