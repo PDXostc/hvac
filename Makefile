@@ -1,6 +1,6 @@
 PROJECT = DNA_HVAC
 INSTALL_FILES = images js icon.png index.html
-WRT_FILES = DNA_common css icon.png index.html setup config.xml js manifest.json images
+WRT_FILES = DNA_common css icon.png index.html setup config.xml js manifest.json images README.txt
 VERSION := 0.0.1
 PACKAGE = $(PROJECT)-$(VERSION)
 
