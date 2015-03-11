@@ -100,6 +100,7 @@ var init_hvac = function () {
 		carIndicator.setStatus("FrontTSetLeftCmd", 15);
 		carIndicator.setStatus("FrontTSetRightCmd", 15);
     }
+    depenancyMet("hvacIndicator.loaded");
 };
 
 function setup_ui() {
