@@ -16,116 +16,109 @@
  *
 -->
 <html id="hvac-app">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<title>DNA_HVAC</title>
-		<meta name="viewport" content="width=1080, height=1920, user-scalable=no" />
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=1080, height=1920, user-scalable=no" />
+    <link rel="stylesheet" href="./DNA_common/css/style.css" />
+    <link rel="stylesheet" href="./css/nouislider.HVAC.css" />
+    <link rel="stylesheet" href="./css/HVAC.css" />
+    <script type="text/javascript" src="./DNA_common/components/jQuery/jquery-1.8.2.js"></script>
+    <script type="text/javascript" src="./DNA_common/js/init.js"></script>
+    <script type="text/javascript">
+      //includeJs("./DNA_common/js/predefAppModel.js");
+      //includeJs("./DNA_common/js/installedApps.js");
+      //includeJs("./DNA_common/js/keyControl.js");
+      //includeJs("./DNA_common/js/actionCatcher.js");
+      includeJs("./js/hvacController.js");
+      includeJs("./js/main.js");
+    </script>
+    <title>DNA_HVAC</title>
+  </head>
 
-		<link rel="stylesheet" href="./DNA_common/css/style.css"/>
-		<link rel="stylesheet" href="./css/nouislider.HVAC.css"/>
-		<link rel="stylesheet" href="./css/HVAC.css"/>
-		<script type="text/javascript" src="./DNA_common/components/jQuery/jquery-1.8.2.js"></script>
-		<script type="text/javascript" src="./DNA_common/js/init.js"></script>
+  <body>
+    <div id="top-bar"></div>
+    <div id="center-panel">
+      <div id="app">
+        <div class="flex-item">
+          <div class="static_parts_bg"></div>
+          <div id="hazard_btn" class="hazard_btn"></div>
+          <div class="climate_labels">
+            <h6 class="label_borders"><strong>L CLIMATE</strong></h6>
+            <h6 class="label_borders"><strong>R CLIMATE</strong></h6>
+          </div>
+          <div id="left_seat_btn" class="left_seat_btn">
+            <div class="left_heat_seat_off"></div>
+            <div id="left_seat_btn_stage" class="left_heat_seat_on stage1"></div>
+          </div>
+          <div id="right_seat_btn" class="right_seat_btn">
+            <div class="right_heat_seat_off"></div>
+            <div id="right_seat_btn_stage" class="right_heat_seat_on stage1"></div>
+          </div>
+          <div class="left_num_bg">
+            <div id="viewport" class="scrollable left">
+              <ul class="temperature">
+                <li>LO</li>
+                <li>16°</li>
+                <li>17°</li>
+                <li>18°</li>
+                <li>19°</li>
+                <li>20°</li>
+                <li>21°</li>
+                <li>22°</li>
+                <li>23°</li>
+                <li>24°</li>
+                <li>25°</li>
+                <li>26°</li>
+                <li>27°</li>
+                <li>28°</li>
+                <li>HI</li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+          <div class="left_num_cover"></div>
+          <div class="right_heat_seat"></div>
+          <div class="right_num_bg">
+            <div id="viewport" class="scrollable right">
+              <ul class="temperature">
+                <li>LO</li>
+                <li>16°</li>
+                <li>17°</li>
+                <li>18°</li>
+                <li>19°</li>
+                <li>20°</li>
+                <li>21°</li>
+                <li>22°</li>
+                <li>23°</li>
+                <li>24°</li>
+                <li>25°</li>
+                <li>26°</li>
+                <li>27°</li>
+                <li>28°</li>
+                <li>HI</li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+          <div class="right_num_cover"></div>
+          <div id="noUiSliderLeft" class="noUiSliderLeft"></div>
+          <div id="noUiSliderRight" class="noUiSliderRight"></div>
+          <div class="fanSpeedOn"></div>
+          <div id="fanSpeedSlider" class="noUiSliderFan"></div>
+          <!-- buttons bottom-->
+          <div id="fan_dir_down_btn" class="fan_dir_down_btn"></div>
+          <div id="fan_dir_right_btn" class="fan_dir_right_btn"></div>
+          <div id="fan_dir_up_btn" class="fan_dir_up_btn"></div>
+          <div id="fan_control_ac" class="fan_control_ac"></div>
+          <div id="fan_control_auto" class="fan_control_auto"></div>
+          <div id="fan_control_circ" class="fan_control_circ"></div>
+          <div id="defrost_max_btn" class="defrost_max_btn"></div>
+          <div id="defrost_rear_btn" class="defrost_rear_btn"></div>
+          <div id="defrost_front_btn" class="defrost_front_btn"></div>
+        </div>
+      </div>
+    </div>
+    <div id="bottom-bar"></div>
+  </body>
 
-		<script type="text/javascript">
-			//includeJs("./DNA_common/js/predefAppModel.js");
-			//includeJs("./DNA_common/js/installedApps.js");
-			//includeJs("./DNA_common/js/keyControl.js");
-			//includeJs("./DNA_common/js/actionCatcher.js");
-			includeJs("./js/hvacController.js");
-			includeJs("./js/main.js");
-		</script>
-	</head>
-
-	<body>
-		<div id="base">
-			<div id="topBar"></div>
-			<div id="app">
-				<!-- <div id="clockElement"></div> -->
-				<!-- BEGIN HTML ELEMENTS -->
-				<div class="flex-item">
-					<div class="static_parts_bg"></div>		
-					<div id="hazard_btn" class="hazard_btn"></div>
-					<div class="climate_labels">
-						<h6 class="label_borders"><strong>L CLIMATE</strong></h6>
-						<h6 class="label_borders"><strong>R CLIMATE</strong></h6>
-					</div>
-					<div id="left_seat_btn" class="left_seat_btn">
-						<div class="left_heat_seat_off"></div>
-						<div id="left_seat_btn_stage" class="left_heat_seat_on stage1"></div>
-					</div>
-					<div id="right_seat_btn" class="right_seat_btn">
-						<div class="right_heat_seat_off"></div>
-						<div id="right_seat_btn_stage" class="right_heat_seat_on stage1"></div>
-					</div>
-					<div class="left_num_bg">
-						<div id="viewport" class="scrollable left">
-							<ul class="temperature">
-								<li>LO</li>
-								<li>16°</li>
-								<li>17°</li>
-								<li>18°</li>
-								<li>19°</li>
-								<li>20°</li>
-								<li>21°</li>
-								<li>22°</li>
-								<li>23°</li>
-								<li>24°</li>
-								<li>25°</li>
-								<li>26°</li>
-								<li>27°</li>
-								<li>28°</li>
-								<li>HI</li>
-								<li></li>
-							</ul>
-						</div>
-					</div>
-					<div class="left_num_cover"></div>			
-					<div class="right_heat_seat"></div>
-					<div class="right_num_bg">
-						<div id="viewport" class="scrollable right">
-							<ul class="temperature">
-								<li>LO</li>
-								<li>16°</li>
-								<li>17°</li>
-								<li>18°</li>
-								<li>19°</li>
-								<li>20°</li>
-								<li>21°</li>
-								<li>22°</li>
-								<li>23°</li>
-								<li>24°</li>
-								<li>25°</li>
-								<li>26°</li>
-								<li>27°</li>
-								<li>28°</li>
-								<li>HI</li>
-								<li></li>
-							</ul>
-						</div>
-					</div>	
-					<div class="right_num_cover"></div>			
-					<div id="noUiSliderLeft" class="noUiSliderLeft"></div>
-					<div id="noUiSliderRight" class="noUiSliderRight"></div>
-					<div class="fanSpeedOn"></div>
-					<div id ="fanSpeedSlider" class="noUiSliderFan"></div>
-					
-					<!-- buttons bottom-->
-					<div id="fan_dir_down_btn" class="fan_dir_down_btn"></div>
-					<div id="fan_dir_right_btn" class="fan_dir_right_btn"></div>
-					<div id="fan_dir_up_btn" class="fan_dir_up_btn"></div>
-					
-					<div id="fan_control_ac" class="fan_control_ac"></div>
-					<div id="fan_control_auto" class="fan_control_auto"></div>
-					<div id="fan_control_circ" class="fan_control_circ"></div>
-					
-					<div id="defrost_max_btn" class="defrost_max_btn"></div>
-					<div id="defrost_rear_btn" class="defrost_rear_btn"></div>
-					<div id="defrost_front_btn" class="defrost_front_btn"></div>
-				</div><!--end of wrapper -->
-				<!-- END HTML ELEMENTS -->
-			</div>	
-			<div id="bottomBar"></div>
-		</div>
-	</body>
 </html>
