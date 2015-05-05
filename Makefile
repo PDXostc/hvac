@@ -10,8 +10,8 @@ ifndef TIZEN_IP
 TIZEN_IP=TizenVTC
 endif
 
-wgtPkg: common
-	zip -r $(PROJECT).wgt config.xml css icon.png index.html js DNA_common images
+dev: clean dev-common
+	zip -r $(PROJECT).wgt $(WRT_FILES)
 
 install_obs:
 	mkdir -p ${DESTDIR}/opt/usr/apps/.preinstallWidgets
@@ -39,8 +39,8 @@ run.feb1: install.feb1
 
 install.feb1: deploy
 ifndef OBS
-	-ssh app@$(TIZEN_IP) "pkgcmd -u -n JLRPOCX008.HVAC -q"
-	ssh app@$(TIZEN_IP) "pkgcmd -i -t wgt -p /home/app/DNA_HVAC.wgt -q"
+	-ssh app@$(TIZEN_IP) "pkgcmd -u -n JLRPOCX008 -q"
+	ssh app@$(TIZEN_IP) "pkgcmd -i -t wgt -p /home/app/JLRPOCX008.HVAC.wgt -q"
 endif
 
 install: deploy
@@ -51,20 +51,50 @@ endif
 
 $(PROJECT).wgt : wgt
 
-deploy: wgtPkg
+deploy: dev
 ifndef OBS
 	scp $(PROJECT).wgt app@$(TIZEN_IP):/home/app
 endif
 
-common: /opt/usr/apps/common-apps
-	cp -r /opt/usr/apps/common-apps DNA_common
-
-dev-common: ../common-app
-	cp -rf ../common-app DNA_common
-
 all:
 	@echo "Nothing to build"
 
+wgtPkg: common
+	zip -r $(PROJECT).wgt $(WRT_FILES)
+
 clean:
-	-rm -f $(PROJECT).wgt
-	-rm -rf DNA_common
+	rm -rf js/services
+	rm -rf common
+	rm -rf css/car
+	rm -rf css/user
+	rm -f $(PROJECT).wgt
+	git clean -f
+	-rm -r DNA_common
+
+common: /opt/usr/apps/common-apps
+	cp -r /opt/usr/apps/common-apps DNA_common
+
+/opt/usr/apps/common-apps:
+	@echo "Please install Common Assets"
+	exit 1
+
+dev-common: ../common-app
+	cp -rf ../common-app DNA_common
+	rm -fr ./DNA_common/.git
+	rm -fr ./DNA_common/common-app/.git
+
+../DNA_common:
+	@echo "Please checkout Common Assets"
+	exit 1
+
+$(INSTALL_DIR) :
+	mkdir -p $(INSTALL_DIR)/
+
+install_xwalk: $(INSTALL_DIR)
+	@echo "Installing $(PROJECT), stand by..."
+	cp $(PROJECT).wgt $(INSTALL_DIR)/
+	export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/5000/dbus/user_bus_socket"
+	su app -c"xwalk -i $(INSTALL_DIR)/$(PROJECT).wgt"
+
+dist:
+	tar czf ../$(PROJECT).tar.bz2 .
