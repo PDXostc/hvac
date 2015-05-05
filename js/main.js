@@ -97,9 +97,11 @@ var init_hvac = function () {
             setup_ui();
 		carIndicator.setStatus("targetTemperatureLeft", 15);
 		carIndicator.setStatus("targetTemperatureRight", 15);
+		// Initialize the actual car temp. too.
 		carIndicator.setStatus("FrontTSetLeftCmd", 15);
 		carIndicator.setStatus("FrontTSetRightCmd", 15);
     }
+    
     depenancyMet("hvacIndicator.loaded");
 };
 
@@ -123,8 +125,8 @@ function setup_ui() {
 			break;
 		    }
 		}
-		carIndicator.setStatus("targetTemperatureLeft", ($(this).val() + 29) - ($(this).val() * 2));
 		carIndicator.setStatus("FrontTSetLeftCmd", ($(this).val() + 29) - ($(this).val() * 2));
+		carIndicator.setStatus("targetTemperatureLeft", ($(this).val() + 29) - ($(this).val() * 2));
 	    }
 	});
 
@@ -136,8 +138,8 @@ function setup_ui() {
 	    connect : "upper",
 	    orientation : "vertical",
 	    slide : function() {
+	    carIndicator.setStatus("FrontTSetRightCmd", ($(this).val() + 29) - ($(this).val() * 2));
 		carIndicator.setStatus("targetTemperatureRight", ($(this).val() + 29) - ($(this).val() * 2));
-		carIndicator.setStatus("FrontTSetRightCmd", ($(this).val() + 29) - ($(this).val() * 2));
 	    }
 	});
 

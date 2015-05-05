@@ -27,11 +27,15 @@ var hvacController = function () {
 	this.initButtons();
 
 	// todo: This is NOT the proper way to initialize this!
-    /*if ( tizen && tizen.vehicle ) {
+	// OK, But what is?
+	/*
+    if ( tizen && tizen.vehicle ) {
 		tizen.vehicle.set( "HeatedSeatRLModeReq", {heatedSeatRLModeReq:3} );
 		tizen.vehicle.set( "HeatedSeatRRModeReq", {heatedSeatRRModeReq:3} );
 		tizen.vehicle.set( "FrontSystemOnCmd", {FrontSystemOnCmd:true} );
-    }*/
+    }
+    */
+	
 };
 
 /**
@@ -231,6 +235,7 @@ function getTargetTemperatureSliderValue(temperature) {
 function setAirFlowDirectionStatus(newStatus) {
 	"use strict";
 	carIndicator.setStatus("airflowDirection", newStatus);
+	// Send new state to car.
 	carIndicator.setStatus("FLHSDistrCmd", newStatus);
 	carIndicator.setStatus("FRHSDistrCmd", newStatus);
 }
@@ -569,8 +574,8 @@ hvacController.prototype.initButtons = function () {
 			}
 		} else {
 			$("#fan_control_auto").removeClass("on");
-
    		    carIndicator.setStatus("fanSpeed", autoACStatus.fanSpeed);
+   		    // Send new state to car.
 		    carIndicator.setStatus("FrontBlwrSpeedCmd", autoACStatus.fanSpeed);
 
 			setAirFlowDirectionStatus(autoACStatus.airflowDirection);
@@ -620,9 +625,10 @@ hvacController.prototype.initButtons = function () {
 		if (!newStatus) newStatus = 0;
 		status = newStatus;
 		carIndicator.status.seatHeaterRight = status;
-
+		// Send new state to car.
+		carIndicator.setStatus("HeatedSeatFRRequest", status);
 		carIndicator.setStatus("SeatHeaterRight", status);
-
+		
 	});
 
 	// SeatHeater - front left
@@ -648,12 +654,15 @@ hvacController.prototype.initButtons = function () {
 		if (!newStatus) newStatus = 0;
 		status = newStatus;
 		carIndicator.status.seatHeaterLeft = status;
-
+		// Send new state to car.
+		carIndicator.setStatus("HeatedSeatFLRequest", status);
 		carIndicator.setStatus("SeatHeaterLeft", status);
+		
 
 	});
 	// AirflowDirection - FloorDuct - 1 (FOOT)
 	$("#fan_dir_down_btn").bind('click', function () {
+		console.log("fan_dir_down_btn click: currentStatus "+currentStatus+" fanSpeed "+carIndicator.status.fanSpeed);
 		var currentStatus = carIndicator.status.airflowDirection;
 		if ((currentStatus >= 0) && (currentStatus <= 7) && (carIndicator.status.fanSpeed !== 0)) {
 			var newStatus = changeAirflowDirectionStatus("#fan_dir_down_btn", currentStatus, 1);
@@ -663,6 +672,7 @@ hvacController.prototype.initButtons = function () {
 	// AirflowDirection - Defroster - 4 (SCREEN)
 	$("#fan_dir_up_btn").bind('click', function () {
 		var currentStatus = carIndicator.status.airflowDirection;
+		console.log("fan_dir_up_btn click: currentStatus "+currentStatus+" fanSpeed "+carIndicator.status.fanSpeed);
 		if ((currentStatus >= 0) && (currentStatus <= 7) && (carIndicator.status.fanSpeed !== 0)) {
 			var newStatus = changeAirflowDirectionStatus("#fan_dir_up_btn", currentStatus, 4);
 			setAirFlowDirectionStatus(newStatus);
@@ -671,6 +681,7 @@ hvacController.prototype.initButtons = function () {
 	// AirflowDirection - Front - 2 (FACE)
 	$("#fan_dir_right_btn").bind('click', function () {
 		var currentStatus = carIndicator.status.airflowDirection;
+		console.log("fan_dir_right_btn click: currentStatus "+currentStatus+" fanSpeed "+carIndicator.status.fanSpeed);
 		if ((currentStatus >= 0) && (currentStatus <= 7) && (carIndicator.status.fanSpeed !== 0)) {
 			var newStatus = changeAirflowDirectionStatus("#fan_dir_right_btn", currentStatus, 2);
 			setAirFlowDirectionStatus(newStatus);
@@ -684,14 +695,17 @@ hvacController.prototype.initButtons = function () {
 			$("#defrost_max_btn").addClass("on");
 			if (carIndicator.status.targetTemperatureLeft < 16) {
 				carIndicator.setStatus("targetTemperatureLeft", 16);
+				// Send new state to car.
 				carIndicator.setStatus("FrontTSetLeftCmd", 16);
 			}
 			if (carIndicator.status.targetTemperatureLeft > 28) {
 				carIndicator.setStatus("targetTemperatureLeft", 28);
+				// Send new state to car.
 				carIndicator.setStatus("FrontTSetLeftCmd", 28);
 			}
 
 			carIndicator.setStatus("fanSpeed", 8);
+			// Send new state to car.
 			carIndicator.setStatus("FrontBlwrSpeedCmd", 15);
 
 			setAirFlowDirectionStatus(7);
