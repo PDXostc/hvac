@@ -32,7 +32,7 @@ kill.feb1:
 	ssh app@$(TIZEN_IP) "pkgcmd -k JLRPOCX008.HVAC"
 
 run: install
-	ssh app@$(TIZEN_IP) "export DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/5000/dbus/user_bus_socket' && xwalkctl  2>&1 | egrep -e 'Dashboard' | awk '{print $1}' | xargs --no-run-if-empty xwalk-launcher -d"
+	ssh app@$(TIZEN_IP) "export DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/5000/dbus/user_bus_socket' && xwalkctl  2>&1 | egrep -e 'HVAC' | awk '{print $1}' | xargs --no-run-if-empty xwalk-launcher -d"
 
 run.feb1: install.feb1
 	ssh app@$(TIZEN_IP) "app_launcher -s JLRPOCX008.HVAC -d "
@@ -45,7 +45,7 @@ endif
 
 install: deploy
 ifndef OBS
-	ssh app@$(TIZEN_IP) "export DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/5000/dbus/user_bus_socket' && xwalkctl  2>&1 | egrep -e 'Dashboard' | awk '{print $1}' | xargs --no-run-if-empty xwalkctl -u"
+	ssh app@$(TIZEN_IP) "export DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/5000/dbus/user_bus_socket' && xwalkctl  2>&1 | egrep -e 'HVAC' | awk '{print $1}' | xargs --no-run-if-empty xwalkctl -u"
 	ssh app@$(TIZEN_IP) "export DBUS_SESSION_BUS_ADDRESS='unix:path=/run/user/5000/dbus/user_bus_socket' && xwalkctl -i /home/app/JLRPOCX008.HVAC.wgt"
 endif
 
