@@ -8,7 +8,7 @@
 * IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
 * PARTICULAR PURPOSE.
 *
-* Filename:	 header.txt
+* Filename:  header.txt
 * Version:              1.0
 * Date:                 January 2013
 * Project:              Widget incorporation
@@ -19,6 +19,11 @@
 *
 */
 
+/* Adds z-index to #settingsPage due to z-indexing in sliderui js */
+#hvac-app #settingsPage {
+  z-index: 3;
+}
+
 /* Override for Settings list items */
 
 .settingElement {
@@ -27,72 +32,59 @@
 
 /*UI Slider stuff*/
 
-div#noUiSliderLeft {
-  width: 14.1%;
-  height: 724px;
+/*UI Slider left and right */
+.noUiSliderLeft,
+.noUiSliderRight {
+  position: absolute;
+  top: 14.6%;
 }
-
-/********LEFT*******/
 
 .noUiSliderLeft,
-.noUiSliderLeft * {
+.noUiSliderLeft *,
+.noUiSliderRight,
+.noUiSliderRight * {
   display: block;
-  box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   cursor: default;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
 }
 
-.noUiSliderLeft {
-  position: relative;
-}
-
-.noUiSliderLeft a {
+.noUiSliderLeft a,
+.noUiSliderRight a {
   position: absolute;
   z-index: 0 !important;
 }
 
-.noUiSliderLeft a:nth-child(2) {
+.noUiSliderLeft a:nth-child(2),
+.noUiSliderRight a:nth-child(2) {
   background: inherit !important;
 }
 
-.noUiSliderLeft.vertical a {
+.noUiSliderLeft.vertical,
+.noUiSliderRight.vertical {
+  width: 14.65%;
+  height: 783px;
+}
+.noUiSliderLeft.vertical a,
+.noUiSliderRight.vertical a {
   bottom: 0;
   width: 100%;
 }
 
-@media screen and (-ms-high-contrast: active),
-(-ms-high-contrast: none) {
-  .noUiSliderLeft:before,
-  body.TOUCH,
-  .noUiSliderLeft div {
-    -ms-touch-action: none;
-  }
-  .noUiSliderLeft:before {
-    position: absolute;
-    z-index: -1;
-    top: -150%;
-    left: -25%;
-    display: block;
-    width: 150%;
-    height: 400%;
-    content: '';
-  }
-  .noUiSliderLeft.vertical:before {
-    top: -25%;
-    left: -150%;
-    width: 400%;
-    height: 150%;
-  }
+.noUiSliderLeft div,
+.noUiSliderRight div {
+  height: 100px;
+  background: url('../images/drag_knob.svg') no-repeat center center;
 }
 
+.noUiSliderLeft.disabled div,
+.noUiSliderRight.disabled div {
+  background: transparent;
+}
+
+/********LEFT*******/
 .noUiSliderLeft {
-  position: absolute;
-  top: 10em;
-  left: 1em;
+  left: .92em;
 }
 
 .noUiSliderLeft.connect a,
@@ -101,150 +93,34 @@ div#noUiSliderLeft {
   background-size: 68%;
 }
 
-.noUiSliderLeft.disabled,
-.noUiSliderLeft.disabled.connect.lower a {
-  background: #ccc;
-  box-shadow: none;
-}
-
 .noUiSliderLeft div {
-  height: 100px;
-  border-radius: 3px;
-  background: #efefe7;
-  background: url('../images/drag_knob.svg') no-repeat center center;
   background-position-x: 91px;
   background-size: 15%;
 }
 
-.noUiSliderLeft.disabled div {
-  background: transparent;
-}
-
-.noUiSliderLeft.vertical {
-  width: 4.3em;
-  height: 20.6em;
-}
-
 .noUiSliderLeft.vertical div {
-  margin: -50px -60px 0 -5px;
+  margin: -50px -60px 0 -1px;
 }
 
-.noUiSliderLeft {
-  top: 18%;
-  left: .9em;
-  height: 40%;
-}
 /*********RIGHT*******/
 
-.noUiSliderRight,
-.noUiSliderRight * {
-  display: block;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  cursor: default;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
 .noUiSliderRight {
-  position: absolute;
-  top: 10em;
-  left: 30.9em;
-  height: 40%;
-}
-
-.noUiSliderRight a {
-  position: absolute;
-  z-index: 0 !important;
-}
-
-.noUiSliderRight a:nth-child(2) {
-  background: inherit !important;
-}
-
-.noUiSliderRight.vertical a {
-  bottom: 0;
-  width: 100%;
-}
-
-.noUiSliderRight.horizontal a {
-  right: 0;
-  height: 100%;
-}
-
-@media screen and (-ms-high-contrast: active),
-(-ms-high-contrast: none) {
-  .noUiSliderRight:before,
-  body.TOUCH,
-  .noUiSliderRight div {
-    -ms-touch-action: none;
-  }
-  .noUiSliderRight:before {
-    position: absolute;
-    z-index: -1;
-    top: -150%;
-    left: -25%;
-    display: block;
-    width: 150%;
-    height: 400%;
-    content: '';
-  }
-  .noUiSliderRight.vertical {
-    width: 12.1%;
-    height: 724px;
-  }
-}
-
-.noUiSliderRight {
-  border-radius: 3px;
+  left: 30.8em;
 }
 
 .noUiSliderRight.connect a,
 .noUiSliderRight.connect.lower {
   background: url('../images/temp_bar_on_right.svg') no-repeat 18px 4px;
-  background-size: 87%;
-}
-
-#audioSettings .noUiSliderRight.connect a {
-  background: url('/images/temp_bar_on_right.svg') no-repeat right bottom;
-  background-size: 85.9%;
-}
-
-.noUiSliderRight.disabled,
-.noUiSliderRight.disabled.connect.lower a {
-  background: #ccc;
-  box-shadow: none;
+  background-size: 68%;
 }
 
 .noUiSliderRight div {
-  height: 100px;
-  border-radius: 3px;
-  background: #efefe7;
-  background: url('/images/drag_knob.svg') no-repeat left center;
   background-position-x: 5px;
   background-size: 26%;
 }
 
-.noUiSliderRight.disabled div {
-  background: transparent;
-}
-
-.noUiSliderRight.vertical {
-  width: 4em;
-  height: 24.3em;
-}
-
 .noUiSliderRight.vertical div {
-  margin: -50px -5px 0 0;
-}
-
-.noUiSliderRight {
-  position: absolute;
-  top: 18%;
-  left: 30.9em;
-  height: 40%;
+  margin: -50px 30px 0 0;
 }
 
 /*********FAN*******/
@@ -252,24 +128,14 @@ div#noUiSliderLeft {
 .noUiSliderFan,
 .noUiSliderFan * {
   display: block;
-  box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   cursor: default;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
-.noUiSliderFan {
-  position: absolute;
-  top: 35.5em;
-  left: 11.8em;
-  height: 12%;
 }
 
 .noUiSliderFan a {
   position: absolute;
+  z-index: 1;
 }
 
 .noUiSliderFan a:nth-child(2) {
@@ -281,28 +147,23 @@ div#noUiSliderLeft {
   width: 100%;
 }
 
-.noUiSliderFan.horizontal {
-  width: 15.3em;
-  height: 4.7em;
-}
-
-@media screen and (-ms-high-contrast: active),
-(-ms-high-contrast: none) {
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .noUiSliderFan:before,
   body.TOUCH,
   .noUiSliderFan div {
     -ms-touch-action: none;
   }
+
   .noUiSliderFan:before {
     position: absolute;
-    z-index: -1;
+    /*z-index: -1;*/
     top: -150%;
-    left: -25%;
     display: block;
     width: 150%;
     height: 400%;
     content: '';
   }
+
   .noUiSliderFan.vertical:before {
     top: -25%;
     left: -150%;
@@ -330,9 +191,8 @@ div#noUiSliderLeft {
   width: 80px;
   height: 100%;
   border-radius: 3px;
-  background: #efefe7;
   background: url('/images/drag_knob.svg') no-repeat center bottom;
-  background-size: 26%;
+  background-size: 40%;
 }
 
 .noUiSliderFan.disabled div {
@@ -341,12 +201,12 @@ div#noUiSliderLeft {
 
 .noUiSliderFan.horizontal {
   width: 42.5%;
-  height: 10.75%;
+  height: 11%;
 }
 
 .noUiSliderFan.horizontal a {
   right: 0;
-  height: 48%;
+  height: 50%;
 }
 
 .noUiSliderFan.horizontal div {
@@ -357,7 +217,6 @@ div#noUiSliderLeft {
   position: absolute;
   top: 66.95%;
   left: 33%;
-  height: 12%;
 }
 
 /*end UI slider stuff*/
@@ -371,18 +230,16 @@ div#noUiSliderLeft {
   border-color: rgba(196, 196, 196, .5);
 }
 
-
 .static_parts_bg {
   position: absolute;
   top: 18%;
-  width: 100%; /*720/720*/
-  height: 60.1%; /*601/1000*/  
-  background: url('../images/static_parts_bg.svg') no-repeat; /*left:9.861111%;((720-578)/2)/720*/
+  width: 100%;
+  height: 60.1%;
+  background: url('../images/static_parts_bg.svg') no-repeat;
   background-size: 100%;
 }
 
 /*********HAZARD BUTTON************/
-
 .hazard_btn {
   position: absolute;
   top: 40px;
@@ -413,25 +270,26 @@ div#noUiSliderLeft {
 
 .label_borders {
   float: left;
-  margin: 0 1.4em 0 3.6em;
+  margin: 0 1.7em 0 3.8em;
   padding-left: 2%;
   border-left: 67px solid #fe9c00;
 }
 
 /*********LEFT HEAT SEAT BUTTON************/
-/* this style indicates seat heaters are off */
 
+/* this style indicates seat heaters are off */
 .engine-off {
   opacity: .4;
 }
 
-/* only available when engine is running */
+/* displaying the "engine-off" class with this style indicates that 
+the engine is off and the seat heaters are unusable at that time */
 
 .left_seat_btn {
   position: absolute;
   top: 22%;
-  left: 21.1111%; /*152/720*/
-  width: 22.08333333%; /*159/720*/
+  left: 21.1111%;
+  width: 22.08333333%;
   height: 6.4em;
 }
 
@@ -469,13 +327,14 @@ div#noUiSliderLeft {
 }
 
 /*********RIGHT HEAT SEAT BUTTON************/
-/* only available when engine is running */
 
+/* displaying the "engine-off" class with this style indicates that 
+the engine is off and the seat heaters are unusable at that time */
 .right_seat_btn {
   position: absolute;
   top: 22%;
-  right: 21.1111%; /*152/720*/
-  width: 22.08333333%; /*159/720*/
+  right: 21.1111%;
+  width: 22.08333333%;
   height: 6.4em;
 }
 
@@ -513,7 +372,6 @@ div#noUiSliderLeft {
 }
 
 /*********LEFT NUM SLIDER************/
-
 .left_num_bg {
   position: absolute;
   top: 35.1%;
@@ -528,9 +386,9 @@ div#noUiSliderLeft {
 .left_num_cover {
   position: absolute;
   top: 35%;
-  left: 21.1111%; /*152/720*/
-  width: 21.9444444%; /*158/720*/
-  height: 11.6em; /*z-index:5;*/
+  left: 21.1111%;
+  width: 21.9444444%;
+  height: 11.6em;
   pointer-events: none;
   background: url('../images/left_number_cover.svg') no-repeat;
   background-size: 100%;
@@ -547,6 +405,7 @@ div#noUiSliderLeft {
   position: relative; /* Enables positionning of elements inside viewport */
   height: 100%;
   margin: 0;
+  margin-left: 50px;
   padding: 0;
   list-style-type: none;
 }
@@ -564,7 +423,6 @@ div#noUiSliderLeft {
 }
 
 /*********RIGHT NUM SLIDER************/
-
 .right_num_bg {
   position: absolute;
   top: 35%;
@@ -579,8 +437,8 @@ div#noUiSliderLeft {
 .right_num_cover {
   position: absolute;
   top: 35%;
-  right: 21.1111%; /*152/720*/
-  width: 21.9444444%; /*158/720*/
+  right: 21.1111%;
+  width: 21.9444444%;
   height: 11.6em;
   pointer-events: none;
   background: url('../images/right_number_cover.svg') no-repeat;
@@ -598,6 +456,7 @@ div#noUiSliderLeft {
   position: relative; /* Enables positionning of elements inside viewport */
   height: 100%;
   margin: 0;
+  margin-left: 40px;
   padding: 0;
   list-style-type: none;
 }
@@ -615,24 +474,23 @@ div#noUiSliderLeft {
 }
 
 /*************lower half******************/
-
 .fanSpeedOn {
   position: absolute;
-  top: 35.53em;
+  top: 35.45em;
   bottom: 25.7em;
   left: 11.9em;
   width: 0;
   height: 9.4%;
-  background: url('../images/fan_bar_on.svg') no-repeat;
+  background: url('../images/fan_bar_on.png') no-repeat;
 }
 
-/********FAN DIRECTION***********/
 
+/********FAN DIRECTION***********/
 .fan_dir_down_btn {
   position: absolute;
-  top: 69%; /*20/1000*/
-  left: 3.333333%; /*24/720*/
-  width: 17.08333333%; /*123/720*/
+  top: 69%;
+  left: 3.333333%;
+  width: 17.08333333%;
   height: 4.8em;
   background: url('../images/fan_dir_down_off.svg') no-repeat;
   background-size: 100%;
@@ -645,9 +503,9 @@ div#noUiSliderLeft {
 
 .fan_dir_right_btn {
   position: absolute;
-  top: 78%; /*20/1000*/
-  left: 3.333333%; /*24/720*/
-  width: 17.08333333%; /*123/720*/
+  top: 78%;
+  left: 3.333333%;
+  width: 17.08333333%;
   height: 4.4em;
   background: url('../images/fan_dir_right_off.svg') no-repeat;
   background-size: 100%;
@@ -660,14 +518,13 @@ div#noUiSliderLeft {
 
 .fan_dir_up_btn {
   position: absolute;
-  top: 86.2%; /*20/1000*/
-  left: 3.333333%; /*24/720*/
-  width: 17.08333333%; /*123/720*/
+  top: 86.2%;
+  left: 3.333333%;
+  width: 17.08333333%;
   height: 4.4em;
   background: url('../images/fan_dir_up_off.svg') no-repeat;
   background-size: 100%;
 }
-
 .fan_dir_up_btn.on {
   background: url('../images/fan_dir_up_on.svg') no-repeat;
   background-size: 100%;
@@ -676,8 +533,8 @@ div#noUiSliderLeft {
 .fan_control_ac {
   position: absolute;
   top: 78.1%;
-  left: 24.333%; /*24/720*/  
-  width: 15.555556%; /*112/720*/ 
+  left: 24.333%;
+  width: 15.555556%;
   height: 4.4em;
   background: url('../images/fan_control_ac_off.svg') no-repeat;
   background-size: 100%;
@@ -691,8 +548,8 @@ div#noUiSliderLeft {
 .fan_control_auto {
   position: absolute;
   top: 78.1%;
-  left: 42.333%; /*24/720*/  
-  width: 15.416667%; /*111/720*/
+  left: 42.333%;
+  width: 15.416667%;
   height: 4.4em;
   background: url('../images/fan_control_auto_off.svg') no-repeat;
   background-size: 100%;
@@ -706,8 +563,8 @@ div#noUiSliderLeft {
 .fan_control_circ {
   position: absolute;
   top: 78.1%;
-  left: 60.333%; /*24/720*/ 
-  width: 15.555556%; /*112/720*/ 
+  left: 60.333%;
+  width: 15.555556%;
   height: 4.4em;
   background: url('../images/fan_control_circ_off.svg') no-repeat;
   background-size: 100%;
@@ -719,12 +576,11 @@ div#noUiSliderLeft {
 }
 
 /***DEFROST****/
-
 .defrost_max_btn {
   position: absolute;
-  top: 69%; /*20/1000*/
-  right: 3.333333%; /*24/720*/
-  width: 17.08333333%; /*123/720*/  
+  top: 69%;
+  right: 3.333333%;
+  width: 17.08333333%;
   height: 4.8em;
   background: url('../images/defrost_max_off.svg') no-repeat;
   background-size: 100%;
@@ -737,9 +593,9 @@ div#noUiSliderLeft {
 
 .defrost_rear_btn {
   position: absolute;
-  top: 78%; /*20/1000*/ 
-  right: 3.333333%; /*24/720*/  
-  width: 17.08333333%; /*123/720*/  
+  top: 78%;
+  right: 3.333333%;
+  width: 17.08333333%;
   height: 4.4em;
   background: url('../images/defrost_rear_off.svg') no-repeat;
   background-size: 100%;
@@ -752,9 +608,9 @@ div#noUiSliderLeft {
 
 .defrost_front_btn {
   position: absolute;
-  top: 86.2%; /*20/1000*/ 
-  right: 3.333333%; /*24/720*/ 
-  width: 17.08333333%; /*123/720*/  
+  top: 86.2%;
+  right: 3.333333%;
+  width: 17.08333333%;
   height: 4.4em;
   background: url('../images/defrost_front_off.svg') no-repeat;
   background-size: 100%;
@@ -764,162 +620,3 @@ div#noUiSliderLeft {
   background: url('../images/defrost_front_on.svg') no-repeat;
   background-size: 100%;
 }
-
-.bottomPanelLogoImg {
-  background: url('../images/jlr_logo_color.png') no-repeat center !important;
-}
-
-#settings {
-  display: none;
-  width: 100%;
-  background: rgba(0, 0, 0, .5);
-}
-
-#overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: none;
-  width: 100%;
-  height: 100%;
-  opacity: .8;
-  background: #000;
-}
-
-#inputBox {
-  top: 70px; /*needs to be at least this high for the keyboard*/
-  left: 12%;
-  display: none;
-  width: 550px;
-  padding-bottom: 5%;
-  text-align: center;
-  background: rgba(0, 0, 0, .8);
-}
-
-.text {
-  padding: 30px 0;
-  text-align: right;
-}
-
-.textBox {
-  font-family: sans-serif, 'Arial';
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 1% 0 4% 2%;
-  padding-left: 1%;
-  color: #606060;
-  border: none;
-  background-color: #fff;
-}
-
-#setupForm {
-  display: block;
-}
-
-#resultMessage {
-  display: none;
-}
-
-#resultMessage h2 {
-  font-size: 20pt;
-  padding: 5%;
-  text-transform: uppercase;
-  color: #fff;
-}
-
-#resultMessage p {
-  font-size: 16pt;
-  line-height: 1.5;
-  width: 80%;
-  margin: 0 auto;
-  text-align: left;
-  color: #fff;
-}
-
-.labelBox {
-  float: left;
-  padding: 15px 20px;
-}
-
-.inputNumberBox {
-  float: left;
-  width: 350px;
-  margin-top: 25px;
-}
-
-.inputNumber {
-  line-height: 75px;
-  width: 215px;
-  height: 75px;
-  margin-bottom: 20px;
-  padding-right: 90px;
-  padding-left: 30px;
-  border: none;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, .2);
-}
-
-.inputNumber:focus {
-  outline: none;
-}
-
-.inputNumberBox .deleteButton {
-  display: inline-block;
-  width: 55px;
-  height: 36px;
-  margin: 18px 0 0 -73px;
-  padding: 0;
-  cursor: pointer;
-  vertical-align: top;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-.loadingSpinnerHistory {
-  top: 130px;
-  width: 100%;
-  height: 100%;
-}
-
-.submitButton {
-  display: inline-block;
-  height: 43px;
-  margin: 5%;
-  padding: 0 20px;
-  text-align: center;
-  background-color: rgba(58, 174, 255, .3);
-  box-shadow: 0 0 2px 2px #1da2ff inset;
-}
-
-#submit,
-#cancel {
-  font-size: 28px;
-  font-weight: bold;
-  line-height: 43px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 1.0);
-  border: none;
-  background: none;
-}
-
-.setup {
-  position: absolute;
-  top: 115px;
-  left: 82%;
-  width: 13%;
-  padding: 0 20px;
-  text-align: center;
-  background-color: rgba(58, 174, 255, .3);
-  box-shadow: 0 0 2px 2px #1da2ff inset;
-}
-
-#setup {
-  font-size: 22px;
-  font-weight: bold;
-  line-height: 38px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 1.0);
-  border: none;
-  background: none;
-}
-/* end of buttons from settings.css */
