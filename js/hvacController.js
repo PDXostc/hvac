@@ -4,9 +4,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -35,7 +35,7 @@ var hvacController = function () {
 		tizen.vehicle.set( "FrontSystemOnCmd", {FrontSystemOnCmd:true} );
     }
     */
-	
+
 };
 
 /**
@@ -527,7 +527,7 @@ hvacController.prototype.initButtons = function () {
 	$("#hazard_btn").bind('click', function () {
 	    carIndicator.status.hazard = !carIndicator.status.hazard;
 	    console.log("hazard click: "+ carIndicator.status.hazard);
-	    
+
 	    // -- Call onChanged() directly as the Hazard Flasher is really a virtual device.
 	    //    onHazardChanged
 	    hvacController.prototype.onHazardChanged(carIndicator.status.hazard);
@@ -628,7 +628,7 @@ hvacController.prototype.initButtons = function () {
 		// Send new state to car.
 		carIndicator.setStatus("HeatedSeatFRRequest", status);
 		carIndicator.setStatus("SeatHeaterRight", status);
-		
+
 	});
 
 	// SeatHeater - front left
@@ -657,7 +657,7 @@ hvacController.prototype.initButtons = function () {
 		// Send new state to car.
 		carIndicator.setStatus("HeatedSeatFLRequest", status);
 		carIndicator.setStatus("SeatHeaterLeft", status);
-		
+
 
 	});
 	// AirflowDirection - FloorDuct - 1 (FOOT)
@@ -712,6 +712,8 @@ hvacController.prototype.initButtons = function () {
 
 			switchAutoACOff();
 		}
+
+		sendRVIHVAC("hvac/defrost_max", !!($("#defrost_max_btn").hasClass("on")));
 	});
 	// Defrost - Rear
 	$("#defrost_rear_btn").bind('click', function () {
