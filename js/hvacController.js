@@ -181,10 +181,10 @@ function toggleSeatHeaterButton(status, button) {
 function toggleButton(buttonStatus, button) {
 	"use strict";
 	// Note: Some signals do not return boolean values!
-	if (buttonStatus === true || buttonStatus === "true" || buttonStatus != 0) {
-		$(button).addClass("on");
-	} else {
+	if (buttonStatus === false || buttonStatus === "false" || buttonStatus == 0) {
 		$(button).removeClass("on");
+	} else {
+		$(button).addClass("on");
 	}
 }
 
@@ -515,6 +515,20 @@ hvacController.prototype.onRearDefrostChanged = function (newStatus) {
 hvacController.prototype.onFrontDefrostChanged = function (newStatus) {
 	"use strict";
 	toggleButton(newStatus, "#defrost_front_btn");
+};
+
+/**
+ * Sets the status of Max Defrost button. Allows following values:
+ *
+ * * `true` - `ON`
+ * * `false` - `OFF`
+ *
+ * @method onMaxDefrostChanged
+ * @param newStatus {Boolean} new status of the Max Defrost
+ */
+hvacController.prototype.onMaxDefrostChanged = function (newStatus) {
+	"use strict";
+	toggleButton(newStatus, "#defrost_max_btn");
 };
 
 /**
