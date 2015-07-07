@@ -347,7 +347,7 @@ hvacController.prototype.onTargetTemperatureLeftChanged = function (newStatus) {
  */
 hvacController.prototype.onHazardChanged = function (newStatus) {
 	"use strict";
-	if (newStatus === true || newStatus === "true") {
+	if ((newStatus === true || newStatus === "true") && hazardTimer == null) {
 		$("#hazard_btn").addClass("on");
 
 		// Each call to hazardlight.change will switch the on/off status of the lights.
