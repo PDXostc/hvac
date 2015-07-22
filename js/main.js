@@ -95,11 +95,36 @@ var init_hvac = function () {
             $(document).on("carIndicatorReady", setup_ui);
         else
             setup_ui();
-		carIndicator.setStatus("targetTemperatureLeft", 15);
-		carIndicator.setStatus("targetTemperatureRight", 15);
-		// Initialize the actual car temp. too.
-		carIndicator.setStatus("FrontTSetLeftCmd", 15);
-		carIndicator.setStatus("FrontTSetRightCmd", 15);
+
+        	//Since AMB isn't 100% put catches in to continue initialization of UI
+	        try{
+				carIndicator.setStatus("targetTemperatureLeft", 15);
+			}
+			catch(err){
+				console.log("targetTemperatureLeft carIndicator.setStatus failed");
+			}
+
+	        try{
+				carIndicator.setStatus("targetTemperatureRight", 15);
+			}
+			catch(err){
+				console.log("targetTemperatureRight carIndicator.setStatus failed");
+			}
+
+			// Initialize the actual car temp. too.
+	        try{
+				carIndicator.setStatus("FrontTSetLeftCmd", 15);
+			}
+			catch(err){
+				console.log("FrontTSetLeftCmd carIndicator.setStatus failed");
+			}
+			
+	        try{
+				carIndicator.setStatus("FrontTSetRightCmd", 15);
+			}
+			catch(err){
+				console.log("FrontTSetRightCmd carIndicator.setStatus failed");
+			}
     }
     
     depenancyMet("hvacIndicator.loaded");
@@ -108,7 +133,7 @@ var init_hvac = function () {
 function setup_ui() {
     console.log("setup_ui() called!");
 	$(".noUiSliderLeft").noUiSlider({
-	    range : [ 0, 14 ],
+	    range : [ -1, 14 ],
 	    step : 1,
 	    start : 14,
 	    handles : 1,
@@ -131,7 +156,7 @@ function setup_ui() {
 	});
 
 	$(".noUiSliderRight").noUiSlider({
-	    range : [ 0, 14 ],
+	    range : [ -1, 14 ],
 	    step : 1,
 	    start : 14,
 	    handles : 1,
