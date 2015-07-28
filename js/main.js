@@ -95,8 +95,6 @@ var init_hvac = function () {
             $(document).on("carIndicatorReady", setup_ui);
         else
             setup_ui();
-
-        	//Since AMB isn't 100% put catches in to continue initialization of UI
 	        try{
 				carIndicator.setStatus("targetTemperatureLeft", 15);
 			}
@@ -140,6 +138,8 @@ function setup_ui() {
 	    connect : "upper",
 	    orientation : "vertical",
 	    slide : function() {
+	    //I have no clue what this block of code is doing
+	    /*
 		if ($("#defrost_max_btn").hasClass("on")) {
 		    switch ($(this).val()) {
 		    case 0:
@@ -150,8 +150,20 @@ function setup_ui() {
 			break;
 		    }
 		}
-		carIndicator.setStatus("FrontTSetLeftCmd", ($(this).val() + 29) - ($(this).val() * 2));
-		carIndicator.setStatus("targetTemperatureLeft", ($(this).val() + 29) - ($(this).val() * 2));
+		*/
+			try{
+				carIndicator.setStatus("FrontTSetLeftCmd", ($(this).val() + 29) - ($(this).val() * 2));
+			}
+			catch(err){
+				console.log(err, "FrontTSetLeftCmd carIndicator.setStatus failed")
+			}
+
+			try{
+				carIndicator.setStatus("targetTemperatureLeft", ($(this).val() + 29) - ($(this).val() * 2));
+		    }
+		    catch(err){
+		    	console.log(err, "targetTemperatureLeft carIndicator.setStatus failed");
+		    }
 	    }
 	});
 
@@ -163,8 +175,19 @@ function setup_ui() {
 	    connect : "upper",
 	    orientation : "vertical",
 	    slide : function() {
-	    carIndicator.setStatus("FrontTSetRightCmd", ($(this).val() + 29) - ($(this).val() * 2));
-		carIndicator.setStatus("targetTemperatureRight", ($(this).val() + 29) - ($(this).val() * 2));
+	    	try{
+	    		carIndicator.setStatus("FrontTSetRightCmd", ($(this).val() + 29) - ($(this).val() * 2));
+			}
+			catch(err){
+				console.log(err, "FrontTSetRightCmd carIndicator.setStatus failed")
+			}
+
+			try{
+				carIndicator.setStatus("targetTemperatureRight", ($(this).val() + 29) - ($(this).val() * 2));
+	    	}
+	    	catch(err){
+	    		console.log(err, "targetTemperatureRight carIndicator.setStatus failed");
+	    	}
 	    }
 	});
 

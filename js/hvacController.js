@@ -252,9 +252,9 @@ function setAirFlowDirectionStatus(newStatus) {
 hvacController.prototype.onAirRecirculationChanged = function (newStatus) {
 	"use strict";
 	// Actual value of newStatus will be either 0 or 1...
-	if (newStatus == true) {
+	if (newStatus === true) {
 		$("#fan_control_circ").addClass("on");
-		switchAutoACOff();
+		//switchAutoACOff();
 	} else {
 		$("#fan_control_circ").removeClass("on");
 	}
@@ -277,6 +277,8 @@ hvacController.prototype.onFanChanged = function (newStatus) {
 	} else {
 		$("#fan_control_ac").addClass("on");
 	}
+/*	"use strict";
+	toggleButton(status, "#fan_control_ac");*/
 };
 
 /**
@@ -531,6 +533,20 @@ hvacController.prototype.onMaxDefrostChanged = function (newStatus) {
 };
 
 /**
+ * Sets the status of Auto Control button. Allows following values:
+ *
+ * * `true` - `ON`
+ * * `false` - `OFF`
+ *
+ * @method onAutoChanged
+ * @param newStatus {Boolean} new status of the Auto Button
+ */
+hvacController.prototype.onAutoChanged = function (newStatus) {
+	"use strict";
+	toggleButton(newStatus, "#fan_control_auto");
+};
+
+/**
  * HVAC buttons initialisation.
  * @method initButtons
  */
@@ -548,11 +564,19 @@ hvacController.prototype.initButtons = function () {
 
 	// A/C
 	$("#fan_control_ac").bind('click', function () {
-		carIndicator.setStatus("Fan", !carIndicator.status.fan);
-		carIndicator.setStatus("ACCommand", !carIndicator.status.fan);
+		if ($("#fan_control_ac").hasClass("on")) {
+			$("#fan_control_ac").removeClass("on");
+			carIndicator.setStatus("Fan", !carIndicator.status.fan);
+			carIndicator.setStatus("ACCommand", !carIndicator.status.fan);
+		} else {
+			$("#fan_control_ac").addClass("on");
+			carIndicator.setStatus("Fan", !carIndicator.status.fan);
+			carIndicator.setStatus("ACCommand", !carIndicator.status.fan);
+		}
 	});
 
 	// AUTO AC
+	//-----------------------------------__CODE CHANGES IN THIS BLOCK-------------------------------
 	$("#fan_control_auto").bind('click', function () {
 		if (!$("#fan_control_auto").hasClass("on")) {
 			autoACStatus.fanSpeed = carIndicator.status.fanSpeed;
@@ -579,14 +603,38 @@ hvacController.prototype.initButtons = function () {
 			carIndicator.setStatus("airRecirculation", false);
 			carIndicator.setStatus("RecircReq", 0);
 
-			if (autoACStatus.targetTemperatureRight < 16 || autoACStatus.targetTemperatureRight > 28) {
-				carIndicator.setStatus("targetTemperatureRight", 22);
-				carIndicator.setStatus("FrontTSetRightCmd", 22);
+			
+/*			if (autoACStatus.targetTemperatureRight < 16 || autoACStatus.targetTemperatureRight > 28) {
+		        try{
+					carIndicator.setStatus("targetTemperatureRight", 22);
+				}
+				catch(err){
+					console.log("targetTemperatureRight carIndicator.setStatus failed");
+				}
+
+		        try{
+					carIndicator.setStatus("FrontTSetRightCmd", 22);
+				}
+				catch(err){
+					console.log("FrontTSetRightCmd carIndicator.setStatus failed");
+				}				
+
 			}
 			if (autoACStatus.targetTemperatureLeft < 16 || autoACStatus.targetTemperatureLeft > 28) {
-				carIndicator.setStatus("targetTemperatureLeft", 22);
-				carIndicator.setStatus("FrontTSetLeftCmd", 22);
-			}
+		        try{
+					carIndicator.setStatus("targetTemperatureLeft", 22);
+				}
+				catch(err){
+					console.log("targetTemperatureLeft carIndicator.setStatus failed");
+				}
+		        try{
+					carIndicator.setStatus("FrontTSetLeftCmd", 22);
+				}
+				catch(err){
+					console.log("FrontTSetLeftCmd carIndicator.setStatus failed");
+				}
+			}*/
+			
 		} else {
 			$("#fan_control_auto").removeClass("on");
    		    carIndicator.setStatus("fanSpeed", autoACStatus.fanSpeed);
@@ -601,22 +649,52 @@ hvacController.prototype.initButtons = function () {
 			carIndicator.setStatus("airRecirculation", autoACStatus.airRecirculation);
 			carIndicator.setStatus("RecircReq", autoACStatus.airRecirculation ? 1 : 0);
 
-			carIndicator.setStatus("targetTemperatureRight", autoACStatus.targetTemperatureRight);
-			carIndicator.setStatus("FrontTSetRightCmd", autoACStatus.targetTemperatureRight);
+			try{
+				carIndicator.setStatus("targetTemperatureRight", autoACStatus.targetTemperatureRight);
+			}
+			catch(err){
+				console.log("targetTemperatureRight carIndicator.setStatus failed");				
+			}
 
-			carIndicator.setStatus("targetTemperatureLeft", autoACStatus.targetTemperatureLeft);
-			carIndicator.setStatus("FrontTSetLeftCmd", autoACStatus.targetTemperatureRight);
+			try{
+				carIndicator.setStatus("FrontTSetRightCmd", autoACStatus.targetTemperatureRight);
+			}
+			catch(err){
+				console.log("FrontTSetLeftCmd carIndicator.setStatus failed");
+			}
+
+			try{
+				carIndicator.setStatus("targetTemperatureLeft", autoACStatus.targetTemperatureLeft);
+			}
+			catch(err){
+				console.log("targetTemperatureLeft carIndicator.setStatus failed");
+			}
+
+			try{
+				carIndicator.setStatus("FrontTSetLeftCmd", autoACStatus.targetTemperatureRight);
+			}
+			catch(err){
+				console.log("FrontTSetLeftCmd carIndicator.setStatus failed");
+			}
+
 
 			if (autoACStatus.maxDefrost) {
 				$("#defrost_max_btn").addClass("on");
 			}
 		}
+		sendRVIHVAC("hvac/control_auto", !!($("#fan_control_auto").hasClass("on")));
 	});
-
+	//--------------------------------------------END CODE CHANGE BLOCK -------------------------
 	// AirRecirculation
 	$("#fan_control_circ").bind('click', function () {
-		carIndicator.setStatus("airRecirculation", !carIndicator.status.airRecirculation);
-		carIndicator.setStatus("RecircReq", !carIndicator.status.airRecirculation ? 1 : 0);
+		if (!$("#fan_control_circ").hasClass("on")) {
+			$("#fan_control_circ").addClass("on");
+			carIndicator.setStatus("airRecirculation", !carIndicator.status.airRecirculation);
+			//carIndicator.setStatus("RecircReq", !carIndicator.status.airRecirculation ? 1 : 0);
+		} else {
+			$("#fan_control_circ").removeClass("on");
+			carIndicator.setStatus("airRecirculation", !carIndicator.status.airRecirculation);
+		}
 	});
 
 	// SeatHeater - front right
@@ -709,11 +787,14 @@ hvacController.prototype.initButtons = function () {
 	});
 
 	// Max Defrost
+	//----------------------------------------CODE CHANGES HERE--------------------------------------------------
 	$("#defrost_max_btn").bind('click', function () {
 		if ($("#defrost_max_btn").hasClass("on")) {
 			$("#defrost_max_btn").removeClass("on");
 		} else {
 			$("#defrost_max_btn").addClass("on");
+			//Why are we only changing the left side??????? Why are we changing anything???
+			/*
 			if (carIndicator.status.targetTemperatureLeft < 16) {
 				carIndicator.setStatus("targetTemperatureLeft", 16);
 				// Send new state to car.
@@ -724,26 +805,51 @@ hvacController.prototype.initButtons = function () {
 				// Send new state to car.
 				carIndicator.setStatus("FrontTSetLeftCmd", 28);
 			}
+			*/
 
-			carIndicator.setStatus("fanSpeed", 8);
+			carIndicator.setStatus("fanSpeed", 5);
 			// Send new state to car.
 			carIndicator.setStatus("FrontBlwrSpeedCmd", 15);
 
-			setAirFlowDirectionStatus(7);
+			setAirFlowDirectionStatus(4);
 
 			switchAutoACOff();
+			try {
+				carIndicator.setStatus("rearDefrost", true);
+			}
+			catch(err) {
+				console.log(err,"rearDefrost setStatus failed");
+			}
+
+			try {
+				carIndicator.setStatus("frontDefrost", true);
+			}
+			catch(err) {
+				console.log(err, "frontDefrost setStatus failed");
+			}
 		}
 
 		sendRVIHVAC("hvac/defrost_max", !!($("#defrost_max_btn").hasClass("on")));
 	});
+	//---------------------------------------END CODE CHANGES---------------------------------------------------
 
 	// Defrost - Rear
 	$("#defrost_rear_btn").bind('click', function () {
-		carIndicator.setStatus("rearDefrost", !carIndicator.status.rearDefrost);
+		try {
+			carIndicator.setStatus("rearDefrost", !carIndicator.status.rearDefrost);
+		} 
+		catch(err){
+			console.log(err, "setStatus rearDefrost failed");
+		}
 	});
 
 	// Defrost - Front
 	$("#defrost_front_btn").bind('click', function () {
-		carIndicator.setStatus("frontDefrost", !carIndicator.status.frontDefrost);
+		try {
+			carIndicator.setStatus("frontDefrost", !carIndicator.status.frontDefrost);
+		}
+		catch(err) {
+			console.log(err, "setStatus frontDefrost failed");
+		}
 	});
 };
