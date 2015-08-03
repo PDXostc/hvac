@@ -138,19 +138,7 @@ function setup_ui() {
 	    connect : "upper",
 	    orientation : "vertical",
 	    slide : function() {
-	    //I have no clue what this block of code is doing
-	    /*
-		if ($("#defrost_max_btn").hasClass("on")) {
-		    switch ($(this).val()) {
-		    case 0:
-			$(this).val(1);
-			break;
-		    case 14:
-			$(this).val(13);
-			break;
-		    }
-		}
-		*/
+
 			try{
 				carIndicator.setStatus("FrontTSetLeftCmd", ($(this).val() + 29) - ($(this).val() * 2));
 			}

@@ -576,7 +576,6 @@ hvacController.prototype.initButtons = function () {
 	});
 
 	// AUTO AC
-	//-----------------------------------__CODE CHANGES IN THIS BLOCK-------------------------------
 	$("#fan_control_auto").bind('click', function () {
 		if (!$("#fan_control_auto").hasClass("on")) {
 			autoACStatus.fanSpeed = carIndicator.status.fanSpeed;
@@ -602,38 +601,6 @@ hvacController.prototype.initButtons = function () {
 
 			carIndicator.setStatus("airRecirculation", false);
 			carIndicator.setStatus("RecircReq", 0);
-
-			
-/*			if (autoACStatus.targetTemperatureRight < 16 || autoACStatus.targetTemperatureRight > 28) {
-		        try{
-					carIndicator.setStatus("targetTemperatureRight", 22);
-				}
-				catch(err){
-					console.log("targetTemperatureRight carIndicator.setStatus failed");
-				}
-
-		        try{
-					carIndicator.setStatus("FrontTSetRightCmd", 22);
-				}
-				catch(err){
-					console.log("FrontTSetRightCmd carIndicator.setStatus failed");
-				}				
-
-			}
-			if (autoACStatus.targetTemperatureLeft < 16 || autoACStatus.targetTemperatureLeft > 28) {
-		        try{
-					carIndicator.setStatus("targetTemperatureLeft", 22);
-				}
-				catch(err){
-					console.log("targetTemperatureLeft carIndicator.setStatus failed");
-				}
-		        try{
-					carIndicator.setStatus("FrontTSetLeftCmd", 22);
-				}
-				catch(err){
-					console.log("FrontTSetLeftCmd carIndicator.setStatus failed");
-				}
-			}*/
 			
 		} else {
 			$("#fan_control_auto").removeClass("on");
@@ -684,7 +651,7 @@ hvacController.prototype.initButtons = function () {
 		}
 		sendRVIHVAC("hvac/control_auto", !!($("#fan_control_auto").hasClass("on")));
 	});
-	//--------------------------------------------END CODE CHANGE BLOCK -------------------------
+
 	// AirRecirculation
 	$("#fan_control_circ").bind('click', function () {
 		if (!$("#fan_control_circ").hasClass("on")) {
@@ -787,25 +754,11 @@ hvacController.prototype.initButtons = function () {
 	});
 
 	// Max Defrost
-	//----------------------------------------CODE CHANGES HERE--------------------------------------------------
 	$("#defrost_max_btn").bind('click', function () {
 		if ($("#defrost_max_btn").hasClass("on")) {
 			$("#defrost_max_btn").removeClass("on");
 		} else {
 			$("#defrost_max_btn").addClass("on");
-			//Why are we only changing the left side??????? Why are we changing anything???
-			/*
-			if (carIndicator.status.targetTemperatureLeft < 16) {
-				carIndicator.setStatus("targetTemperatureLeft", 16);
-				// Send new state to car.
-				carIndicator.setStatus("FrontTSetLeftCmd", 16);
-			}
-			if (carIndicator.status.targetTemperatureLeft > 28) {
-				carIndicator.setStatus("targetTemperatureLeft", 28);
-				// Send new state to car.
-				carIndicator.setStatus("FrontTSetLeftCmd", 28);
-			}
-			*/
 
 			carIndicator.setStatus("fanSpeed", 5);
 			// Send new state to car.
@@ -831,7 +784,6 @@ hvacController.prototype.initButtons = function () {
 
 		sendRVIHVAC("hvac/defrost_max", !!($("#defrost_max_btn").hasClass("on")));
 	});
-	//---------------------------------------END CODE CHANGES---------------------------------------------------
 
 	// Defrost - Rear
 	$("#defrost_rear_btn").bind('click', function () {
