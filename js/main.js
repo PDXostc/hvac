@@ -95,11 +95,34 @@ var init_hvac = function () {
             $(document).on("carIndicatorReady", setup_ui);
         else
             setup_ui();
-		carIndicator.setStatus("targetTemperatureLeft", 15);
-		carIndicator.setStatus("targetTemperatureRight", 15);
-		// Initialize the actual car temp. too.
-		carIndicator.setStatus("FrontTSetLeftCmd", 15);
-		carIndicator.setStatus("FrontTSetRightCmd", 15);
+	        try{
+				carIndicator.setStatus("targetTemperatureLeft", 15);
+			}
+			catch(err){
+				console.log("targetTemperatureLeft carIndicator.setStatus failed");
+			}
+
+	        try{
+				carIndicator.setStatus("targetTemperatureRight", 15);
+			}
+			catch(err){
+				console.log("targetTemperatureRight carIndicator.setStatus failed");
+			}
+
+			// Initialize the actual car temp. too.
+	        try{
+				carIndicator.setStatus("FrontTSetLeftCmd", 15);
+			}
+			catch(err){
+				console.log("FrontTSetLeftCmd carIndicator.setStatus failed");
+			}
+			
+	        try{
+				carIndicator.setStatus("FrontTSetRightCmd", 15);
+			}
+			catch(err){
+				console.log("FrontTSetRightCmd carIndicator.setStatus failed");
+			}
     }
     
     depenancyMet("hvacIndicator.loaded");
@@ -108,38 +131,51 @@ var init_hvac = function () {
 function setup_ui() {
     console.log("setup_ui() called!");
 	$(".noUiSliderLeft").noUiSlider({
-	    range : [ 0, 14 ],
+	    range : [ -1, 14 ],
 	    step : 1,
 	    start : 14,
 	    handles : 1,
 	    connect : "upper",
 	    orientation : "vertical",
 	    slide : function() {
-		if ($("#defrost_max_btn").hasClass("on")) {
-		    switch ($(this).val()) {
-		    case 0:
-			$(this).val(1);
-			break;
-		    case 14:
-			$(this).val(13);
-			break;
+
+			try{
+				carIndicator.setStatus("FrontTSetLeftCmd", ($(this).val() + 29) - ($(this).val() * 2));
+			}
+			catch(err){
+				console.log(err, "FrontTSetLeftCmd carIndicator.setStatus failed")
+			}
+
+			try{
+				carIndicator.setStatus("targetTemperatureLeft", ($(this).val() + 29) - ($(this).val() * 2));
 		    }
-		}
-		carIndicator.setStatus("FrontTSetLeftCmd", ($(this).val() + 29) - ($(this).val() * 2));
-		carIndicator.setStatus("targetTemperatureLeft", ($(this).val() + 29) - ($(this).val() * 2));
+		    catch(err){
+		    	console.log(err, "targetTemperatureLeft carIndicator.setStatus failed");
+		    }
 	    }
 	});
 
 	$(".noUiSliderRight").noUiSlider({
-	    range : [ 0, 14 ],
+	    range : [ -1, 14 ],
 	    step : 1,
 	    start : 14,
 	    handles : 1,
 	    connect : "upper",
 	    orientation : "vertical",
 	    slide : function() {
-	    carIndicator.setStatus("FrontTSetRightCmd", ($(this).val() + 29) - ($(this).val() * 2));
-		carIndicator.setStatus("targetTemperatureRight", ($(this).val() + 29) - ($(this).val() * 2));
+	    	try{
+	    		carIndicator.setStatus("FrontTSetRightCmd", ($(this).val() + 29) - ($(this).val() * 2));
+			}
+			catch(err){
+				console.log(err, "FrontTSetRightCmd carIndicator.setStatus failed")
+			}
+
+			try{
+				carIndicator.setStatus("targetTemperatureRight", ($(this).val() + 29) - ($(this).val() * 2));
+	    	}
+	    	catch(err){
+	    		console.log(err, "targetTemperatureRight carIndicator.setStatus failed");
+	    	}
 	    }
 	});
 

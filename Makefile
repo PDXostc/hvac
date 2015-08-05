@@ -69,7 +69,7 @@ clean:
 	rm -rf css/user
 	rm -f $(PROJECT).wgt
 	git clean -f
-	-rm -r DNA_common
+	-rm -rf DNA_common
 
 common: /opt/usr/apps/common-apps
 	cp -r /opt/usr/apps/common-apps DNA_common
