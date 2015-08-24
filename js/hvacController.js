@@ -480,6 +480,27 @@ hvacController.prototype.onAirflowDirectionChanged = function (newStatus) {
 	}
 };
 
+function handleAirflowDirectionButtonPressed(button, buttonChangeByValue) {
+	var currentStatus = carIndicator.status.airflowDirection;
+	console.log(button + " click: currentStatus " + currentStatus + " fanSpeed " + carIndicator.status.fanSpeed);
+
+	if (carIndicator.status.fanSpeed == 0) {
+		carIndicator.setStatus("fanSpeed", 3);
+	}
+
+	if ((currentStatus >= 0) && (currentStatus <= 7)) {// && (carIndicator.status.fanSpeed !== 0)) {
+		var newStatus = changeAirflowDirectionStatus(button, currentStatus, buttonChangeByValue);
+		setAirFlowDirectionStatus(newStatus);
+
+		if (newStatus == 0) {
+			carIndicator.setStatus("fanSpeed", 0);
+		}
+
+		console.log("newStatus " + newStatus + " fanSpeed " + carIndicator.status.fanSpeed);
+	}
+
+}
+
 /**
  * Sets the status of Rear Defrost button. Allows following values:
  *
@@ -715,32 +736,17 @@ hvacController.prototype.initButtons = function () {
 
 	// AirflowDirection - FloorDuct - 1 (FOOT)
 	$("#fan_dir_down_btn").bind('click', function () {
-		console.log("fan_dir_down_btn click: currentStatus " + currentStatus + " fanSpeed " + carIndicator.status.fanSpeed);
-		var currentStatus = carIndicator.status.airflowDirection;
-		if ((currentStatus >= 0) && (currentStatus <= 7) && (carIndicator.status.fanSpeed !== 0)) {
-			var newStatus = changeAirflowDirectionStatus("#fan_dir_down_btn", currentStatus, 1);
-			setAirFlowDirectionStatus(newStatus);
-		}
+		handleAirflowDirectionButtonPressed("#fan_dir_down_btn", 1);
 	});
 
 	// AirflowDirection - Defroster - 4 (SCREEN)
 	$("#fan_dir_up_btn").bind('click', function () {
-		var currentStatus = carIndicator.status.airflowDirection;
-		console.log("fan_dir_up_btn click: currentStatus " + currentStatus + " fanSpeed " + carIndicator.status.fanSpeed);
-		if ((currentStatus >= 0) && (currentStatus <= 7) && (carIndicator.status.fanSpeed !== 0)) {
-			var newStatus = changeAirflowDirectionStatus("#fan_dir_up_btn", currentStatus, 4);
-			setAirFlowDirectionStatus(newStatus);
-		}
+		handleAirflowDirectionButtonPressed("#fan_dir_up_btn", 4);
 	});
 
 	// AirflowDirection - Front - 2 (FACE)
 	$("#fan_dir_right_btn").bind('click', function () {
-		var currentStatus = carIndicator.status.airflowDirection;
-		console.log("fan_dir_right_btn click: currentStatus " + currentStatus + " fanSpeed " + carIndicator.status.fanSpeed);
-		if ((currentStatus >= 0) && (currentStatus <= 7) && (carIndicator.status.fanSpeed !== 0)) {
-			var newStatus = changeAirflowDirectionStatus("#fan_dir_right_btn", currentStatus, 2);
-			setAirFlowDirectionStatus(newStatus);
-		}
+		handleAirflowDirectionButtonPressed("#fan_dir_right_btn", 2);
 	});
 
 	// Max Defrost
