@@ -268,7 +268,7 @@ hvacController.prototype.onAirRecirculationChanged = function (newStatus) {
  */
 hvacController.prototype.onFanChanged = function (newStatus) {
 	"use strict";
-	toggleButton(newStatus, "#left_seat_btn_stage", true);
+	toggleButton(newStatus, "#fan_control_ac", true);
 };
 
 /**
