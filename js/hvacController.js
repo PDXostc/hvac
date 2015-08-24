@@ -177,12 +177,15 @@ function toggleSeatHeaterButton(status, button) {
  * @method toggleButton
  * @param buttonStatus {Boolean|Integer} ON/OFF status of the button
  * @param button {Object} button to toggle ON/OFF
+ * @param shouldSwitchAutoACOff {Boolean} toggling this button switches auto ac off
  */
-function toggleButton(buttonStatus, button) {
+function toggleButton(buttonStatus, button, shouldSwitchAutoACOff) {
 	"use strict";
 	// Note: Some signals do not return boolean values!
 	if (buttonStatus === false || buttonStatus === "false" || buttonStatus == 0) {
 		$(button).removeClass("on");
+
+		if (shouldSwitchAutoACOff) switchAutoACOff();
 	} else {
 		$(button).addClass("on");
 	}
@@ -251,13 +254,7 @@ function setAirFlowDirectionStatus(newStatus) {
  */
 hvacController.prototype.onAirRecirculationChanged = function (newStatus) {
 	"use strict";
-	// Actual value of newStatus will be either 0 or 1...
-	if (newStatus === true) {
-		$("#fan_control_circ").addClass("on");
-		//switchAutoACOff();
-	} else {
-		$("#fan_control_circ").removeClass("on");
-	}
+	toggleButton(newStatus, "#fan_control_circ", false);
 };
 
 /**
@@ -271,14 +268,7 @@ hvacController.prototype.onAirRecirculationChanged = function (newStatus) {
  */
 hvacController.prototype.onFanChanged = function (newStatus) {
 	"use strict";
-	if (newStatus === false || newStatus === "false") {
-		$("#fan_control_ac").removeClass("on");
-		switchAutoACOff();
-	} else {
-		$("#fan_control_ac").addClass("on");
-	}
-/*	"use strict";
-	toggleButton(status, "#fan_control_ac");*/
+	toggleButton(newStatus, "#left_seat_btn_stage", true);
 };
 
 /**
@@ -501,7 +491,7 @@ hvacController.prototype.onAirflowDirectionChanged = function (newStatus) {
  */
 hvacController.prototype.onRearDefrostChanged = function (newStatus) {
 	"use strict";
-	toggleButton(newStatus, "#defrost_rear_btn");
+	toggleButton(newStatus, "#defrost_rear_btn", false);
 };
 
 /**
@@ -515,7 +505,7 @@ hvacController.prototype.onRearDefrostChanged = function (newStatus) {
  */
 hvacController.prototype.onFrontDefrostChanged = function (newStatus) {
 	"use strict";
-	toggleButton(newStatus, "#defrost_front_btn");
+	toggleButton(newStatus, "#defrost_front_btn", false);
 };
 
 /**
@@ -529,7 +519,7 @@ hvacController.prototype.onFrontDefrostChanged = function (newStatus) {
  */
 hvacController.prototype.onMaxDefrostChanged = function (newStatus) {
 	"use strict";
-	toggleButton(newStatus, "#defrost_max_btn");
+	toggleButton(newStatus, "#defrost_max_btn", false);
 };
 
 /**
@@ -543,7 +533,7 @@ hvacController.prototype.onMaxDefrostChanged = function (newStatus) {
  */
 hvacController.prototype.onAutoChanged = function (newStatus) {
 	"use strict";
-	toggleButton(newStatus, "#fan_control_auto");
+	toggleButton(newStatus, "#fan_control_auto", false);
 };
 
 /**
@@ -601,7 +591,7 @@ hvacController.prototype.initButtons = function () {
 
 			carIndicator.setStatus("airRecirculation", false);
 			carIndicator.setStatus("RecircReq", 0);
-			
+
 		} else {
 			$("#fan_control_auto").removeClass("on");
    		    carIndicator.setStatus("fanSpeed", autoACStatus.fanSpeed);
@@ -620,7 +610,7 @@ hvacController.prototype.initButtons = function () {
 				carIndicator.setStatus("targetTemperatureRight", autoACStatus.targetTemperatureRight);
 			}
 			catch(err){
-				console.log("targetTemperatureRight carIndicator.setStatus failed");				
+				console.log("targetTemperatureRight carIndicator.setStatus failed");
 			}
 
 			try{
@@ -789,7 +779,7 @@ hvacController.prototype.initButtons = function () {
 	$("#defrost_rear_btn").bind('click', function () {
 		try {
 			carIndicator.setStatus("rearDefrost", !carIndicator.status.rearDefrost);
-		} 
+		}
 		catch(err){
 			console.log(err, "setStatus rearDefrost failed");
 		}
