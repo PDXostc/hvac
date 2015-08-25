@@ -807,6 +807,13 @@ hvacController.prototype.initButtons = function () {
 		catch(err){
 			console.log(err, "setStatus rearDefrost failed");
 		}
+
+		if (carIndicator.extras.defrostMax && !carIndicator.status.rearDefrost) {
+			carIndicator.extras.defrostMax = false;
+			sendRVIHVAC("hvac/defrost_max", carIndicator.extras.defrostMax);
+			$("#defrost_max_btn").removeClass("on");
+		}
+
 	});
 
 	// Defrost - Front
@@ -816,6 +823,12 @@ hvacController.prototype.initButtons = function () {
 		}
 		catch(err) {
 			console.log(err, "setStatus frontDefrost failed");
+		}
+
+		if (carIndicator.extras.defrostMax && !carIndicator.status.frontDefrost) {
+			carIndicator.extras.defrostMax = false;
+			sendRVIHVAC("hvac/defrost_max", carIndicator.extras.defrostMax);
+			$("#defrost_max_btn").removeClass("on");
 		}
 	});
 };
