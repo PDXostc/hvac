@@ -177,12 +177,15 @@ function toggleSeatHeaterButton(status, button) {
  * @method toggleButton
  * @param buttonStatus {Boolean|Integer} ON/OFF status of the button
  * @param button {Object} button to toggle ON/OFF
+ * @param shouldSwitchAutoACOff {Boolean} toggling this button switches auto ac off
  */
-function toggleButton(buttonStatus, button) {
+function toggleButton(buttonStatus, button, shouldSwitchAutoACOff) {
 	"use strict";
 	// Note: Some signals do not return boolean values!
 	if (buttonStatus === false || buttonStatus === "false" || buttonStatus == 0) {
 		$(button).removeClass("on");
+
+		if (shouldSwitchAutoACOff) switchAutoACOff();
 	} else {
 		$(button).addClass("on");
 	}
@@ -196,6 +199,9 @@ function switchAutoACOff() {
 	"use strict";
 	if ($("#fan_control_auto").hasClass("on")) {
 		$("#fan_control_auto").removeClass("on");
+
+		carIndicator.extras.controlAuto = false;
+		sendRVIHVAC("hvac/control_auto", carIndicator.extras.controlAuto);
 	}
 }
 
@@ -203,6 +209,9 @@ function switchAutoACOn() {
 	"use strict";
 	if (!$("#fan_control_auto").hasClass("on")) {
 		$("#fan_control_auto").addClass("on");
+
+		carIndicator.extras.controlAuto = true;
+		sendRVIHVAC("hvac/control_auto", carIndicator.extras.controlAuto);
 	}
 }
 
@@ -251,13 +260,7 @@ function setAirFlowDirectionStatus(newStatus) {
  */
 hvacController.prototype.onAirRecirculationChanged = function (newStatus) {
 	"use strict";
-	// Actual value of newStatus will be either 0 or 1...
-	if (newStatus === true) {
-		$("#fan_control_circ").addClass("on");
-		//switchAutoACOff();
-	} else {
-		$("#fan_control_circ").removeClass("on");
-	}
+	toggleButton(newStatus, "#fan_control_circ", false);
 };
 
 /**
@@ -271,14 +274,7 @@ hvacController.prototype.onAirRecirculationChanged = function (newStatus) {
  */
 hvacController.prototype.onFanChanged = function (newStatus) {
 	"use strict";
-	if (newStatus === false || newStatus === "false") {
-		$("#fan_control_ac").removeClass("on");
-		switchAutoACOff();
-	} else {
-		$("#fan_control_ac").addClass("on");
-	}
-/*	"use strict";
-	toggleButton(status, "#fan_control_ac");*/
+	toggleButton(newStatus, "#fan_control_ac", true);
 };
 
 /**
@@ -349,7 +345,7 @@ hvacController.prototype.onTargetTemperatureLeftChanged = function (newStatus) {
  */
 hvacController.prototype.onHazardChanged = function (newStatus) {
 	"use strict";
-	if (newStatus === true || newStatus === "true") {
+	if ((newStatus === true || newStatus === "true") && hazardTimer == null) {
 		$("#hazard_btn").addClass("on");
 
 		// Each call to hazardlight.change will switch the on/off status of the lights.
@@ -490,6 +486,27 @@ hvacController.prototype.onAirflowDirectionChanged = function (newStatus) {
 	}
 };
 
+function handleAirflowDirectionButtonPressed(button, buttonChangeByValue) {
+	var currentStatus = carIndicator.status.airflowDirection;
+	console.log(button + " click: currentStatus " + currentStatus + " fanSpeed " + carIndicator.status.fanSpeed);
+
+	if (carIndicator.status.fanSpeed == 0) {
+		carIndicator.setStatus("fanSpeed", 3);
+	}
+
+	if ((currentStatus >= 0) && (currentStatus <= 7)) {// && (carIndicator.status.fanSpeed !== 0)) {
+		var newStatus = changeAirflowDirectionStatus(button, currentStatus, buttonChangeByValue);
+		setAirFlowDirectionStatus(newStatus);
+
+		if (newStatus == 0) {
+			carIndicator.setStatus("fanSpeed", 0);
+		}
+
+		console.log("newStatus " + newStatus + " fanSpeed " + carIndicator.status.fanSpeed);
+	}
+
+}
+
 /**
  * Sets the status of Rear Defrost button. Allows following values:
  *
@@ -501,7 +518,7 @@ hvacController.prototype.onAirflowDirectionChanged = function (newStatus) {
  */
 hvacController.prototype.onRearDefrostChanged = function (newStatus) {
 	"use strict";
-	toggleButton(newStatus, "#defrost_rear_btn");
+	toggleButton(newStatus, "#defrost_rear_btn", false);
 };
 
 /**
@@ -515,7 +532,7 @@ hvacController.prototype.onRearDefrostChanged = function (newStatus) {
  */
 hvacController.prototype.onFrontDefrostChanged = function (newStatus) {
 	"use strict";
-	toggleButton(newStatus, "#defrost_front_btn");
+	toggleButton(newStatus, "#defrost_front_btn", false);
 };
 
 /**
@@ -529,7 +546,7 @@ hvacController.prototype.onFrontDefrostChanged = function (newStatus) {
  */
 hvacController.prototype.onMaxDefrostChanged = function (newStatus) {
 	"use strict";
-	toggleButton(newStatus, "#defrost_max_btn");
+	toggleButton(newStatus, "#defrost_max_btn", false);
 };
 
 /**
@@ -543,7 +560,7 @@ hvacController.prototype.onMaxDefrostChanged = function (newStatus) {
  */
 hvacController.prototype.onAutoChanged = function (newStatus) {
 	"use strict";
-	toggleButton(newStatus, "#fan_control_auto");
+	toggleButton(newStatus, "#fan_control_auto", false);
 };
 
 /**
@@ -578,19 +595,20 @@ hvacController.prototype.initButtons = function () {
 	// AUTO AC
 	$("#fan_control_auto").bind('click', function () {
 		if (!$("#fan_control_auto").hasClass("on")) {
+			$("#fan_control_auto").addClass("on");
+
 			autoACStatus.fanSpeed = carIndicator.status.fanSpeed;
 			autoACStatus.airflowDirection = carIndicator.status.airflowDirection;
 			autoACStatus.fan = carIndicator.status.fan;
 			autoACStatus.airRecirculation = carIndicator.status.airRecirculation;
 			autoACStatus.targetTemperatureRight = carIndicator.status.targetTemperatureRight;
 			autoACStatus.targetTemperatureLeft = carIndicator.status.targetTemperatureLeft;
-			autoACStatus.maxDefrost = $("#defrost_max_btn").hasClass("on") ? true : false;
+			autoACStatus.maxDefrost = carIndicator.extras.defrostMax;
 
 			if (autoACStatus.maxDefrost) {
 				$("#defrost_max_btn").removeClass("on");
+				carIndicator.extras.defrostMax = false;
 			}
-
-			$("#fan_control_auto").addClass("on");
 
 			carIndicator.setStatus("fanSpeed", 0);
 
@@ -601,7 +619,9 @@ hvacController.prototype.initButtons = function () {
 
 			carIndicator.setStatus("airRecirculation", false);
 			carIndicator.setStatus("RecircReq", 0);
-			
+
+			carIndicator.extras.controlAuto = true;
+
 		} else {
 			$("#fan_control_auto").removeClass("on");
    		    carIndicator.setStatus("fanSpeed", autoACStatus.fanSpeed);
@@ -620,7 +640,7 @@ hvacController.prototype.initButtons = function () {
 				carIndicator.setStatus("targetTemperatureRight", autoACStatus.targetTemperatureRight);
 			}
 			catch(err){
-				console.log("targetTemperatureRight carIndicator.setStatus failed");				
+				console.log("targetTemperatureRight carIndicator.setStatus failed");
 			}
 
 			try{
@@ -644,12 +664,17 @@ hvacController.prototype.initButtons = function () {
 				console.log("FrontTSetLeftCmd carIndicator.setStatus failed");
 			}
 
-
 			if (autoACStatus.maxDefrost) {
 				$("#defrost_max_btn").addClass("on");
+				carIndicator.extras.defrostMax = true;
 			}
+
+			carIndicator.extras.controlAuto = false;
+
 		}
-		sendRVIHVAC("hvac/control_auto", !!($("#fan_control_auto").hasClass("on")));
+
+		sendRVIHVAC("hvac/control_auto", carIndicator.extras.controlAuto);
+		sendRVIHVAC("hvac/defrost_max", carIndicator.extras.defrostMax);
 	});
 
 	// AirRecirculation
@@ -725,38 +750,25 @@ hvacController.prototype.initButtons = function () {
 
 	// AirflowDirection - FloorDuct - 1 (FOOT)
 	$("#fan_dir_down_btn").bind('click', function () {
-		console.log("fan_dir_down_btn click: currentStatus " + currentStatus + " fanSpeed " + carIndicator.status.fanSpeed);
-		var currentStatus = carIndicator.status.airflowDirection;
-		if ((currentStatus >= 0) && (currentStatus <= 7) && (carIndicator.status.fanSpeed !== 0)) {
-			var newStatus = changeAirflowDirectionStatus("#fan_dir_down_btn", currentStatus, 1);
-			setAirFlowDirectionStatus(newStatus);
-		}
+		handleAirflowDirectionButtonPressed("#fan_dir_down_btn", 1);
 	});
 
 	// AirflowDirection - Defroster - 4 (SCREEN)
 	$("#fan_dir_up_btn").bind('click', function () {
-		var currentStatus = carIndicator.status.airflowDirection;
-		console.log("fan_dir_up_btn click: currentStatus " + currentStatus + " fanSpeed " + carIndicator.status.fanSpeed);
-		if ((currentStatus >= 0) && (currentStatus <= 7) && (carIndicator.status.fanSpeed !== 0)) {
-			var newStatus = changeAirflowDirectionStatus("#fan_dir_up_btn", currentStatus, 4);
-			setAirFlowDirectionStatus(newStatus);
-		}
+		handleAirflowDirectionButtonPressed("#fan_dir_up_btn", 4);
 	});
 
 	// AirflowDirection - Front - 2 (FACE)
 	$("#fan_dir_right_btn").bind('click', function () {
-		var currentStatus = carIndicator.status.airflowDirection;
-		console.log("fan_dir_right_btn click: currentStatus " + currentStatus + " fanSpeed " + carIndicator.status.fanSpeed);
-		if ((currentStatus >= 0) && (currentStatus <= 7) && (carIndicator.status.fanSpeed !== 0)) {
-			var newStatus = changeAirflowDirectionStatus("#fan_dir_right_btn", currentStatus, 2);
-			setAirFlowDirectionStatus(newStatus);
-		}
+		handleAirflowDirectionButtonPressed("#fan_dir_right_btn", 2);
 	});
 
 	// Max Defrost
 	$("#defrost_max_btn").bind('click', function () {
 		if ($("#defrost_max_btn").hasClass("on")) {
 			$("#defrost_max_btn").removeClass("on");
+
+			carIndicator.extras.defrostMax = false;
 		} else {
 			$("#defrost_max_btn").addClass("on");
 
@@ -780,19 +792,28 @@ hvacController.prototype.initButtons = function () {
 			catch(err) {
 				console.log(err, "frontDefrost setStatus failed");
 			}
+
+			carIndicator.extras.defrostMax = true;
 		}
 
-		sendRVIHVAC("hvac/defrost_max", !!($("#defrost_max_btn").hasClass("on")));
+		sendRVIHVAC("hvac/defrost_max", carIndicator.extras.defrostMax);
 	});
 
 	// Defrost - Rear
 	$("#defrost_rear_btn").bind('click', function () {
 		try {
 			carIndicator.setStatus("rearDefrost", !carIndicator.status.rearDefrost);
-		} 
+		}
 		catch(err){
 			console.log(err, "setStatus rearDefrost failed");
 		}
+
+		if (carIndicator.extras.defrostMax && !carIndicator.status.rearDefrost) {
+			carIndicator.extras.defrostMax = false;
+			sendRVIHVAC("hvac/defrost_max", carIndicator.extras.defrostMax);
+			$("#defrost_max_btn").removeClass("on");
+		}
+
 	});
 
 	// Defrost - Front
@@ -802,6 +823,12 @@ hvacController.prototype.initButtons = function () {
 		}
 		catch(err) {
 			console.log(err, "setStatus frontDefrost failed");
+		}
+
+		if (carIndicator.extras.defrostMax && !carIndicator.status.frontDefrost) {
+			carIndicator.extras.defrostMax = false;
+			sendRVIHVAC("hvac/defrost_max", carIndicator.extras.defrostMax);
+			$("#defrost_max_btn").removeClass("on");
 		}
 	});
 };
