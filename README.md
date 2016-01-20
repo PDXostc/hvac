@@ -1,4 +1,3 @@
-
 Copyright (c) 2014, Intel Corporation, Jaguar Land Rover
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +17,7 @@ Version: XW_TizenIVI3_0_01FEB_AGL_05MAR2015
 Maintainer: Jeffery Eastwood <jeastwo1@jaguarlandrover.com>
 Mailing list: dev@lists.tizen.org
 
-Build Instructions: 
+Build Instructions:
 
 	make apps - To build the wgt files for all release apps
 
@@ -30,7 +29,7 @@ Set the TIZEN_IP enviroment varable to the ip of target. or set TizenVTC host na
 
 	make run.feb1 - To build, install and run on the platform
 
-KnownIssues: 
+KnownIssues:
 	Doesn't work with a car..  This need to be connected to a car through
 	AMB and each car has a diffrent interface.
 
